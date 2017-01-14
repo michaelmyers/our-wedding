@@ -11,6 +11,3 @@ cache:
   - node_modules
   - typings/globals
   - typings/modules
-
-after_success:
-    - npm run deploy
