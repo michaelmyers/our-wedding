@@ -17,7 +17,7 @@ function deploy() {
             ]
         }
     }).then(function () {
-        console.log("done");
+        console.log("All done");
         // console.log("\n");
     }).catch(function (err) {
         console.error(err.message);

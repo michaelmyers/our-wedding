@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This fixes the bad types in the firebase-admin package
+# See http://stackoverflow.com/questions/41470524/firebase-admin-auth-createuser-error-nodejstypescriptfirebase-admin
+echo Cleaning firebase-admin types.
+sed -i.bak '/<reference types="chai" \/>/d' node_modules/firebase-admin/lib/*.d.ts
+sed -i.bak '/<reference types="chai" \/>/d' node_modules/firebase-admin/lib/**/*.d.ts
