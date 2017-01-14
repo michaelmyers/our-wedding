@@ -31,7 +31,7 @@ var plugins = [];
 // If it is production
 if (node_env === "production") {
   // For production postfix min to the file names
-  projectName += ".min";
+  // projectName += ".min";
   // Add the production plugins
   plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
@@ -44,7 +44,7 @@ plugins.push(new webpack.DefinePlugin(buildVariables));
 var config = {
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "public"),
     filename: "scripts/" + projectName + ".js",
   },
   // Enable sourcemaps for debugging webpack's output.
