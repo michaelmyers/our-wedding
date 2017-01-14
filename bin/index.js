@@ -7,14 +7,19 @@ var fs = require("fs");
 var path = require("path");
 var guest_list_1 = require("../src/models/guest-list");
 var config = require("../wedding.config");
+var wedding = require("../wedding.config");
 var pkg = require("../package.json");
+if (!config.firebaseAdmin) {
+    console.log("Firebase Admin configuration not found in wedding.config");
+    process.exit(1);
+}
 if (!config.firebase) {
     console.error("Firebase configuration not found in wedding.config");
     process.exit(1);
 }
 admin.initializeApp({
-    credential: admin.credential.cert(config.firebase),
-    databaseURL: "https://wedding-website-b17ea.firebaseio.com"
+    credential: admin.credential.cert(config.firebaseAdmin),
+    databaseURL: wedding.firebase.databaseURL
 });
 var database = admin.database();
 var partiesRef = database.ref("/parties");
