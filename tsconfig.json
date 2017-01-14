@@ -12,7 +12,8 @@
     "bin/**/*",
     "src/**/*",
     "./typings/index.d.ts",
-    "./typings/config.d.ts"
+    "./typings/config.d.ts",
+    "./typings/firebase-tools.d.ts"
   ],
   "exclude": [
     "node_modules",

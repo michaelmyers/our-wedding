@@ -1,5 +1,6 @@
 # Private config file
 wedding.config.js
+.firebaserc
 
 # Do not track the generated javascript and map files from typescript
 src/**/*.js
@@ -7,7 +8,9 @@ src/**/*.map
 src/**/*/*.d.ts
 
 # Build Artifacts
-dist/
+public/style/
+public/scripts/
+coverage/
 
 # Dependencies
 node_modules/
