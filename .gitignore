@@ -8,6 +8,7 @@ src/**/*/*.d.ts
 
 # Build Artifacts
 dist/
+coverage/
 
 # Dependencies
 node_modules/
