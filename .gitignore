@@ -1,0 +1,20 @@
+
+# Private config file
+wedding.config.js
+
+# Do not track the generated javascript and map files from typescript
+src/**/*.js
+src/**/*.map
+src/**/*/*.d.ts
+
+# Dependencies
+node_modules/
+typings/globals/
+typings/modules/
+
+# Build Generated
+npm-debug.log
+yarn.lock
+
+# System Files
+**/.DS_Store
