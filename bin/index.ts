@@ -9,7 +9,13 @@ import * as path from "path";
 import GuestList from "../src/models/guest-list";
 
 const config = require("../wedding.config");
+const wedding = require("../wedding.config");
 const pkg = require("../package.json");
+
+if (!config.firebaseAdmin) {
+  console.log("Firebase Admin configuration not found in wedding.config");
+  process.exit(1);
+}
 
 if (!config.firebase) {
   console.error("Firebase configuration not found in wedding.config");
@@ -17,8 +23,8 @@ if (!config.firebase) {
 }
 
 admin.initializeApp({
-  credential: admin.credential.cert(config.firebase),
-  databaseURL: "https://wedding-website-b17ea.firebaseio.com"
+  credential: admin.credential.cert(config.firebaseAdmin),
+  databaseURL: wedding.firebase.databaseURL
 });
 
 let database: firebase.database.Database = admin.database() as any;
