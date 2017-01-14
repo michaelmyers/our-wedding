@@ -1,0 +1,40 @@
+{
+  "globalDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "classnames": "registry:dt/classnames#0.0.0+20160316155526",
+    "csv-parse": "registry:dt/csv-parse#1.1.0+20161121205806",
+    "enzyme": "registry:dt/enzyme#2.4.1+20161004164857",
+    "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
+    "fetch-mock": "registry:dt/fetch-mock#5.0.0+20160829142453",
+    "isomorphic-fetch": "registry:dt/isomorphic-fetch#0.0.0+20160830175641",
+    "mocha": "registry:dt/mocha#2.2.5+20160720003353",
+    "moment": "registry:dt/moment#2.11.1+20161010105546",
+    "node": "registry:dt/node#6.0.0+20161110151007",
+    "object-assign": "registry:dt/object-assign#4.0.1+20161006140353",
+    "react": "registry:dt/react#0.14.0+20160927082313",
+    "react-addons-create-fragment": "registry:dt/react-addons-create-fragment#0.14.0+20160709044614",
+    "react-addons-css-transition-group": "registry:dt/react-addons-css-transition-group#0.14.0+20160316155526",
+    "react-addons-linked-state-mixin": "registry:dt/react-addons-linked-state-mixin#0.14.0+20160316155526",
+    "react-addons-perf": "registry:dt/react-addons-perf#15.1.0+20160619031933",
+    "react-addons-pure-render-mixin": "registry:dt/react-addons-pure-render-mixin#0.14.0+20160316155526",
+    "react-addons-test-utils": "registry:dt/react-addons-test-utils#0.14.0+20160427035638",
+    "react-addons-transition-group": "registry:dt/react-addons-transition-group#0.14.0+20160701001352",
+    "react-addons-update": "registry:dt/react-addons-update#0.14.0+20160316155526",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-ga": "registry:dt/react-ga#1.4.1+20160930194758",
+    "react-global": "registry:dt/react-global#0.14.0+20160316155526",
+    "react-redux": "registry:dt/react-redux#4.4.0+20160908183346",
+    "react-router": "registry:dt/react-router#2.0.0+20160928130202",
+    "react-router-redux": "registry:dt/react-router-redux#4.0.0+20160930121107",
+    "react-router/history": "registry:dt/react-router/history#2.0.0+20160830150755",
+    "redux": "registry:dt/redux#3.5.2+20160703092728",
+    "redux-mock-store": "registry:dt/redux-mock-store#0.0.6+20160907111255",
+    "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
+    "sinon": "registry:dt/sinon#1.16.0+20160924120326",
+    "sinon-chai": "registry:dt/sinon-chai#2.7.0+20160317120654"
+  },
+  "dependencies": {
+    "blueimp-md5": "registry:dt/blueimp-md5#1.1.0+20160428043022",
+    "commander": "registry:dt/commander#2.3.0+20161118092844"
+  }
+}
