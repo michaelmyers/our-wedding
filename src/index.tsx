@@ -8,9 +8,11 @@ import { IndexRoute, Route, Router, useRouterHistory } from "react-router";
 import { replace, syncHistoryWithStore } from "react-router-redux";
 
 import Site from "./frames/Site";
+import AreaInformationPage from "./pages/AreaInformationPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import RaceRegistrationPage from "./pages/RaceRegistrationPage";
+import RegistryPage from "./pages/Registry";
 import RSVPPage from "./pages/RSVPPage";
 import rootReducer from "./reducers";
 import configureStore from "./store";
@@ -74,8 +76,10 @@ let render = function () {
             <Router history={history} onUpdate={onUpdate}>
                 <Route path="/" component={Site}>
                     <IndexRoute component={HomePage} />
+                    <Route path="/washington-dc" component={AreaInformationPage} />
                     <Route path="/rsvp" component={RSVPPage} />
                     <Route path="/race" component={RaceRegistrationPage} />
+                    <Route path="/registry" component={RegistryPage} />
                     <Route path="*" component={NotFoundPage} />
                 </Route>
             </Router>

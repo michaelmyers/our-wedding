@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Link } from "react-router";
 import { AppBar } from "react-toolbox";
-import { Layout, Navigation, Panel } from "react-toolbox";
+import { Layout, Panel } from "react-toolbox";
+
+const style = require("./style.scss");
 
 interface SiteProps {
     children: JSX.Element[];
@@ -42,13 +44,14 @@ class Site extends React.Component<SiteProps, SiteState> {
         return (
             <Layout>
                 <Panel>
-                    <AppBar >
-                        <Navigation type="horizontal">
-                            <Link to="/rsvp"> RSVP</Link>
-                            <Link to="/race"> 5k</Link>
-                        </Navigation>
+                    <AppBar className={style.appBar}>
+                        <Link className={style.navLink} to="/"> Wedding</Link>
+                        <Link className={style.navLink} to="/washington-dc"> Washington, D.C.</Link>
+                        <Link className={style.navLink} to="/registry"> Registry</Link>
+                        <Link className={style.navLink} to="/rsvp"> RSVP</Link>
+                        <Link className={style.navLink} to="/race"> 5k</Link>
                     </AppBar>
-                    <div style={{ flex: 1, overflowY: "auto", padding: "1.8rem" }}>
+                    <div className={style.container}>
                         {this.props.children}
                     </div>
                 </Panel>

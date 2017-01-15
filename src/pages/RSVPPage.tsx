@@ -4,6 +4,7 @@ import { Button } from "react-toolbox/lib/button";
 import Input from "react-toolbox/lib/input";
 
 import { getParty, rsvpGuest, setEmail } from "../actions";
+import { Col, Row } from "../components/Grid";
 import Guest, { RSVP } from "../models/guest";
 import GuestList from "../models/guest-list";
 import { State } from "../reducers";
@@ -112,7 +113,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
         if (this.state.party) {
             for (let guest of this.state.party.guests) {
                 party.push(
-                    <li key={guest.id}>
+                    <li key={guest.id} style={{ listStyle: "none" }}>
                         <GuestRSVP guest={guest} onChange={this.onRSVPChange} />
                     </li>
                 );
@@ -120,13 +121,19 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
         }
 
         return (
-            <div>
+            <span>
+                <Row center>
+                    <Col>
+                        <h2>RSVP</h2>
+                        <p> Please respond by February 18 </p>
+                    </Col>
+                </Row>
                 {this.props.error ? (
                     <p> {this.props.error.message}</p>
                 ) : undefined}
                 {this.props.party ? (
                     <span>
-                        <ul>{party}</ul>
+                        <ul style={{ paddingLeft: 0 }}>{party}</ul>
                         <Button raised onClick={this.handleRSVP}> RSVP </Button>
                     </span>
                 ) : undefined}
@@ -137,7 +144,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                         <Button label="RSVP" onClick={this.handleSetEmail} raised primary />
                     </span>
                 ) : undefined}
-            </div>
+            </span>
         );
     }
 }

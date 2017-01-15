@@ -2,6 +2,7 @@ import * as React from "react";
 import Checkbox from "react-toolbox/lib/checkbox";
 import Input from "react-toolbox/lib/input";
 
+import { Col, Row } from "../components/Grid";
 import Guest, { RSVP, RSVPStatus } from "../models/guest";
 
 interface GuestRSVPProps {
@@ -107,28 +108,42 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
 
     render() {
         return (
-            <div>
-                <Input
-                    hint="Guest Name"
-                    type="text"
-                    value={this.state.fullName}
-                    onChange={this.updateName} />
-                <Checkbox
-                    checked={this.state.accepts}
-                    label="Delightfully Accepts"
-                    onChange={this.updateAccept}
-                    />
-                <Checkbox
-                    checked={this.state.declines}
-                    label="Regretfully Declines"
-                    onChange={this.updateDecline}
-                    />
-                <Input
-                    hint="Food Preferences?"
-                    type="text"
-                    value={this.state.foodPreferences}
-                    onChange={this.updateFoodPreferences} />
-            </div>
+            <span style={{ backgroundColor: "#fde6d4" }}>
+                <Row>
+                    <Col>
+                        <Input
+                            hint="Guest Name"
+                            type="text"
+                            value={this.state.fullName}
+                            onChange={this.updateName} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Checkbox
+                            checked={this.state.accepts}
+                            label="Delightfully Accepts"
+                            onChange={this.updateAccept}
+                            />
+                    </Col>
+                    <Col>
+                        <Checkbox
+                            checked={this.state.declines}
+                            label="Regretfully Declines"
+                            onChange={this.updateDecline}
+                            />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Input
+                            hint="Food Preferences?"
+                            type="text"
+                            value={this.state.foodPreferences}
+                            onChange={this.updateFoodPreferences} />
+                    </Col >
+                </Row >
+            </span>
         );
     }
 }
