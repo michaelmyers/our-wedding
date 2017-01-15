@@ -1,3 +1,4 @@
+import { RSVP } from "../models/guest";
 import GuestList from "../models/guest-list";
 import { RegistrationStatus } from "../models/registration";
 import party from "../services/party";
@@ -103,4 +104,9 @@ export function getParty() {
             dispatch(partyError(error));
         });
     };
+}
+
+export function rsvpGuest(rsvp: RSVP) {
+    console.log(rsvp.fullName + " " + rsvp.status);
+    party.rsvpGuest(rsvp);
 }

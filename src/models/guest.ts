@@ -2,11 +2,21 @@ let md5 = require("blueimp-md5");
 
 import { generateId } from "../utils";
 
-export interface GuestProps {
+export type RSVPStatus = "ATTENDING" | "DECLINED" | "UNKNOWN";
+
+export interface RSVP {
+    fullName?: string;
+    status?: RSVPStatus;
+    foodPreferences?: string;
+    party?: string;
+    id?: string;
+}
+
+export interface GuestProps extends RSVP {
     email?: string;
     firstName?: string;
     lastName?: string;
-    party?: string;
+    rsvpDate?: Date;
 }
 
 export default class Guest implements GuestProps {
@@ -15,8 +25,18 @@ export default class Guest implements GuestProps {
         this.email = props.email;
         this.firstName = props.firstName;
         this.lastName = props.lastName;
+        this.fullName = props.fullName ? props.fullName : this.firstName + " " + this.lastName;
         this.party = props.party;
+        this.foodPreferences = props.foodPreferences ? props.foodPreferences : "";
+        this.rsvpDate = props.rsvpDate;
+        this.status = props.status ? props.status : "UNKNOWN";
     }
+
+    readonly status: RSVPStatus;
+
+    readonly foodPreferences: string;
+
+    readonly rsvpDate: Date;
 
     readonly email: string;
 
@@ -26,7 +46,7 @@ export default class Guest implements GuestProps {
         if (this.email) {
             id = md5(this.email.toLowerCase());
         } else if (this.firstName || this.lastName) {
-            // If now email, they are probably a child of one
+            // If no email, they are probably a child of one
             // of the adult guests.
             id = md5(this.firstName.toLowerCase() + this.lastName.toLowerCase());
         } else {
@@ -41,9 +61,7 @@ export default class Guest implements GuestProps {
 
     readonly lastName: string;
 
-    get fullName(): string {
-        return this.firstName + " " + this.lastName;
-    }
+    readonly fullName: string;
 
     readonly party: string;
 
@@ -57,6 +75,10 @@ export default class Guest implements GuestProps {
         let firstName = data["FNAME"] || data["firstName"];
         let lastName = data["LNAME"] || data["lastName"];
         let party = data["PARTY"] || data["party"];
+
+        let status = data["status"];
+        let foodPreferences = data["foodPreferences"];
+        let fullName = data["fullName"];
 
         // A couple of rules.
         // 1. If none of the data exists, return undefined
@@ -78,6 +100,6 @@ export default class Guest implements GuestProps {
             party = lastName + "-" + generateId();
         }
 
-        return new Guest({ email, firstName, lastName, party });
+        return new Guest({ email, fullName, firstName, lastName, party, status, foodPreferences });
     }
 }
