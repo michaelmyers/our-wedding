@@ -4,6 +4,7 @@ import { Button } from "react-toolbox/lib/button";
 import Input from "react-toolbox/lib/input";
 
 import { register } from "../actions";
+import { Col, Row } from "../components/Grid";
 import { RegistrationStatus } from "../models/registration";
 import { State } from "../reducers";
 
@@ -48,7 +49,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
         // console.log("Race componentWillReceiveProps");
         // console.log(props);
         if (props.email) {
-            this.setState({...this.state, email: props.email});
+            this.setState({ ...this.state, email: props.email });
         }
     }
 
@@ -62,14 +63,26 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
 
     render() {
         return (
-            <div>
-                <h2>The Wedding 5k</h2>
-                <section>
-                    <Input type="text" label="Name" name="name" icon="assignment_ind" value={this.state.name} onChange={this.handleChange.bind(this, "name")} />
-                    <Input type="email" label="Email" icon="email" value={this.state.email} onChange={this.handleChange.bind(this, "email")} />
-                </section>
-                <Button label="Register" onClick={this.handleRegister} raised primary />
-            </div>
+            <span>
+                <Row center>
+                    <Col>
+                        <h2>The Wedding 5k</h2>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <section>
+                            <Input type="text" label="Name" name="name" icon="assignment_ind" value={this.state.name} onChange={this.handleChange.bind(this, "name")} />
+                            <Input type="email" label="Email" icon="email" value={this.state.email} onChange={this.handleChange.bind(this, "email")} />
+                        </section>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Button label="Register" onClick={this.handleRegister} raised primary />
+                    </Col>
+                </Row>
+            </span>
         );
     }
 }
