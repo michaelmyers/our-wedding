@@ -1,8 +1,22 @@
 import * as Firebase from "firebase";
 
+import { RSVP } from "../models/guest";
 import GuestList from "../models/guest-list";
 
 namespace party {
+
+    export function rsvpGuest(rsvp: RSVP) {
+        return new Promise(function (then, reject) {
+            let userRef = Firebase.database().ref("parties/" + rsvp.party + "/" + rsvp.id);
+
+            userRef.update({
+                status: rsvp.status,
+                fullName: rsvp.fullName,
+                foodPreferences: rsvp.foodPreferences,
+                rsvpTimestamp: Date.now()
+            });
+        });
+    }
     export function getParty(): Promise<GuestList> {
         return new Promise(function (then, reject) {
 

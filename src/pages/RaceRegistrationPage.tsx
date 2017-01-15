@@ -35,8 +35,8 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
     constructor(props: RaceRegistrationPageProps) {
         super(props);
 
-        console.log("Race constructor");
-        console.log(props);
+        // console.log("Race constructor");
+        // console.log(props);
         this.state = {
             name: "",
             email: props.email ? props.email : "",
@@ -45,8 +45,8 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
     }
 
     componentWillReceiveProps(props: RaceRegistrationPageProps) {
-        console.log("Race componentWillReceiveProps");
-        console.log(props);
+        // console.log("Race componentWillReceiveProps");
+        // console.log(props);
         if (props.email) {
             this.setState({...this.state, email: props.email});
         }

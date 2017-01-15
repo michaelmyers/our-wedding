@@ -2,31 +2,55 @@ let md5 = require("blueimp-md5");
 
 import { generateId } from "../utils";
 
-export interface GuestProps {
+export type RSVPStatus = "ATTENDING" | "DECLINED" | "UNKNOWN";
+
+export interface RSVP {
+    fullName?: string;
+    status?: RSVPStatus;
+    foodPreferences?: string;
+    party?: string;
+    id?: string;
+}
+
+export interface GuestProps extends RSVP {
     email?: string;
     firstName?: string;
     lastName?: string;
-    party?: string;
+    rsvpTimestamp?: number;
 }
 
 export default class Guest implements GuestProps {
 
     constructor(props: GuestProps) {
-        this.email = props.email;
-        this.firstName = props.firstName;
-        this.lastName = props.lastName;
+        this.email = props.email ? props.email : "";
+        this.firstName = props.firstName ? props.firstName : "";
+        this.lastName = props.lastName ? props.lastName : "";
+        this.fullName = props.fullName ? props.fullName : this.generateFullName();
         this.party = props.party;
+        this.foodPreferences = props.foodPreferences ? props.foodPreferences : "";
+        this.rsvpTimestamp = props.rsvpTimestamp ? props.rsvpTimestamp : Date.now();
+        this.status = props.status ? props.status : "UNKNOWN";
+        this.id = props.id ? props.id : this.generateID();
     }
 
-    readonly email: string;
+    private generateFullName(): string {
+        let fullName: string = this.firstName + " " + this.lastName;
+        if (this.firstName.length === 0 && this.lastName.length === 0) {
+            // The names were actually blank so just make it an empty string
+            // Because right now it is " "
+            fullName = "";
+        }
 
-    get id(): string {
+        return fullName;
+    }
+
+    private generateID(): string {
         let id: string;
 
         if (this.email) {
             id = md5(this.email.toLowerCase());
         } else if (this.firstName || this.lastName) {
-            // If now email, they are probably a child of one
+            // If no email, they are probably a child of one
             // of the adult guests.
             id = md5(this.firstName.toLowerCase() + this.lastName.toLowerCase());
         } else {
@@ -37,26 +61,40 @@ export default class Guest implements GuestProps {
         return id;
     }
 
+    readonly status: RSVPStatus;
+
+    readonly foodPreferences: string;
+
+    readonly rsvpTimestamp: number;
+
+    readonly email: string;
+
+    readonly id: string;
+
     readonly firstName: string;
 
     readonly lastName: string;
 
-    get fullName(): string {
-        return this.firstName + " " + this.lastName;
-    }
+    readonly fullName: string;
 
     readonly party: string;
 
-    static parse(data: any): Guest | undefined {
+    static parse(data: any): Guest {
 
         if (!data) {
             return undefined;
         }
 
+        // These are pulled in from the CSV as well
         let email = data["EMAIL"] || data["email"];
         let firstName = data["FNAME"] || data["firstName"];
         let lastName = data["LNAME"] || data["lastName"];
         let party = data["PARTY"] || data["party"];
+
+        let status = data["status"];
+        let foodPreferences = data["foodPreferences"];
+        let fullName = data["fullName"];
+        let id = data["id"];
 
         // A couple of rules.
         // 1. If none of the data exists, return undefined
@@ -78,6 +116,6 @@ export default class Guest implements GuestProps {
             party = lastName + "-" + generateId();
         }
 
-        return new Guest({ email, firstName, lastName, party });
+        return new Guest({ id, email, fullName, firstName, lastName, party, status, foodPreferences });
     }
 }

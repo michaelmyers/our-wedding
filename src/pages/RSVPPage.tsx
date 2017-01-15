@@ -3,13 +3,17 @@ import { connect } from "react-redux";
 import { Button } from "react-toolbox/lib/button";
 import Input from "react-toolbox/lib/input";
 
-import { getParty, setEmail } from "../actions";
+import { getParty, rsvpGuest, setEmail } from "../actions";
+import Guest, { RSVP } from "../models/guest";
 import GuestList from "../models/guest-list";
 import { State } from "../reducers";
+
+import GuestRSVP from "../components/GuestRSVP";
 
 interface RSVPPageProps {
     setEmail: (email: string) => (dispatch: Redux.Dispatch<any>) => void;
     getParty: () => (dispatch: Redux.Dispatch<any>) => void;
+    rsvpGuest: (rsvp: RSVP) => void;
     user: firebase.User;
     email: string;
     emailHash: string;
@@ -19,6 +23,7 @@ interface RSVPPageProps {
 
 interface RSVPPageState {
     party: GuestList;
+    rsvps: { [guestId: string]: RSVP };
     email: string;
 }
 
@@ -39,6 +44,9 @@ function mapDispatchToProps(dispatch: Redux.Dispatch<any>) {
         },
         getParty: function () {
             return dispatch(getParty());
+        },
+        rsvpGuest: function (rsvp: RSVP) {
+            rsvpGuest(rsvp);
         }
     };
 }
@@ -47,8 +55,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
     constructor(props: RSVPPageProps) {
         super(props);
-        console.log("RSVP constructor");
-        console.log(props);
+        // console.log("RSVP constructor");
+        // console.log(props);
         if (props.email) {
             // If we already have an email, get the party
             this.props.getParty();
@@ -56,16 +64,19 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
         // if we don't have
         this.state = {
             party: props.party,
-            email: ""
+            email: "",
+            rsvps: {}
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleSetEmail = this.handleSetEmail.bind(this);
+        this.onRSVPChange = this.onRSVPChange.bind(this);
+        this.handleRSVP = this.handleRSVP.bind(this);
     }
 
     componentWillReceiveProps(nextProps: RSVPPageProps) {
-        console.log("RSVP willReceiveProps");
-        console.log(nextProps);
+        // console.log("RSVP willReceiveProps");
+        // console.log(nextProps);
         if (!this.state.party && !nextProps.error) {
             // if no party, try to get one
             this.props.getParty();
@@ -85,12 +96,26 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
         this.props.setEmail(this.state.email);
     }
 
+    handleRSVP() {
+        for (let id in this.state.rsvps) {
+            this.props.rsvpGuest(this.state.rsvps[id]);
+        }
+    }
+
+    onRSVPChange(guest: Guest, rsvp: RSVP) {
+        this.state.rsvps[guest.id] = rsvp;
+    }
+
     render() {
 
         let party: JSX.Element[] = [];
         if (this.state.party) {
             for (let guest of this.state.party.guests) {
-                party.push(<li key={guest.id}> {guest.fullName} </li>);
+                party.push(
+                    <li key={guest.id}>
+                        <GuestRSVP guest={guest} onChange={this.onRSVPChange} />
+                    </li>
+                );
             }
         }
 
@@ -100,14 +125,18 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                     <p> {this.props.error.message}</p>
                 ) : undefined}
                 {this.props.party ? (
-                    <ul>{party}</ul>
-                ) : (
-                        <span>
-                            <p> Please enter you email </p>
-                            <Input type="email" label="Email" icon="email" value={this.state.email} onChange={this.handleEmailChange} />
-                            <Button label="RSVP" onClick={this.handleSetEmail} raised primary />
-                        </span>
-                    )}
+                    <span>
+                        <ul>{party}</ul>
+                        <Button raised onClick={this.handleRSVP}> RSVP </Button>
+                    </span>
+                ) : undefined}
+                {this.props.user && !this.props.email ? (
+                    <span>
+                        <p> Please enter you email </p>
+                        <Input type="email" label="Email" icon="email" value={this.state.email} onChange={this.handleEmailChange} />
+                        <Button label="RSVP" onClick={this.handleSetEmail} raised primary />
+                    </span>
+                ) : undefined}
             </div>
         );
     }

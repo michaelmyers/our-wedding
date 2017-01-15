@@ -30,6 +30,7 @@ export function upload(guestListPath: string) {
         let parties = guestList.parties;
         let myparty = guestList.myparty;
 
+        // Checks if all the data is written, if it is it closes the DB connection.
         function goOffline() {
             if (Object.keys(parties).length === 0 && Object.keys(myparty).length === 0) {
                 console.log("All done, going offline");
