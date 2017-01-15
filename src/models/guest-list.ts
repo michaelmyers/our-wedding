@@ -81,7 +81,10 @@ export default class GuestList {
             // Other wise iterate through the keys, it came from the DB
         } else if (typeof data === "object") {
             for (let key of Object.keys(data)) {
-                let guest = Guest.parse(data[key]);
+                // Keep track of the key, set it as the ID
+                let id: string = key as string;
+                let guestProps = {...data[key], id };
+                let guest = Guest.parse(guestProps);
                 if (guest) {
                     guestList.push(guest);
                 }

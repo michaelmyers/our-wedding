@@ -109,8 +109,8 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
         return (
             <div>
                 <Input
+                    hint="Guest Name"
                     type="text"
-                    hint="Name"
                     value={this.state.fullName}
                     onChange={this.updateName} />
                 <Checkbox

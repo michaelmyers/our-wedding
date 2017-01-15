@@ -7,19 +7,13 @@ namespace party {
 
     export function rsvpGuest(rsvp: RSVP) {
         return new Promise(function (then, reject) {
-
-            console.log(rsvp);
-
             let userRef = Firebase.database().ref("parties/" + rsvp.party + "/" + rsvp.id);
 
             userRef.update({
                 status: rsvp.status,
                 fullName: rsvp.fullName,
-                foodPreferences: rsvp.foodPreferences
-            }).then(function() {
-                console.log("data written");
-            }).catch(function(error) {
-                console.log(error);
+                foodPreferences: rsvp.foodPreferences,
+                rsvpTimestamp: Date.now()
             });
         });
     }

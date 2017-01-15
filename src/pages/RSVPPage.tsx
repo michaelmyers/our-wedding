@@ -55,8 +55,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
     constructor(props: RSVPPageProps) {
         super(props);
-        console.log("RSVP constructor");
-        console.log(props);
+        // console.log("RSVP constructor");
+        // console.log(props);
         if (props.email) {
             // If we already have an email, get the party
             this.props.getParty();
@@ -75,8 +75,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
     }
 
     componentWillReceiveProps(nextProps: RSVPPageProps) {
-        console.log("RSVP willReceiveProps");
-        console.log(nextProps);
+        // console.log("RSVP willReceiveProps");
+        // console.log(nextProps);
         if (!this.state.party && !nextProps.error) {
             // if no party, try to get one
             this.props.getParty();
@@ -97,15 +97,12 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
     }
 
     handleRSVP() {
-        console.log("RSVPPage RSVP");
         for (let id in this.state.rsvps) {
             this.props.rsvpGuest(this.state.rsvps[id]);
         }
     }
 
     onRSVPChange(guest: Guest, rsvp: RSVP) {
-        console.log("updating RSVP ");
-        console.log(rsvp);
         this.state.rsvps[guest.id] = rsvp;
     }
 

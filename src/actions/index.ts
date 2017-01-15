@@ -107,6 +107,5 @@ export function getParty() {
 }
 
 export function rsvpGuest(rsvp: RSVP) {
-    console.log(rsvp.fullName + " " + rsvp.status);
     party.rsvpGuest(rsvp);
 }

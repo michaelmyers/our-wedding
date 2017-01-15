@@ -16,31 +16,35 @@ export interface GuestProps extends RSVP {
     email?: string;
     firstName?: string;
     lastName?: string;
-    rsvpDate?: Date;
+    rsvpTimestamp?: number;
 }
 
 export default class Guest implements GuestProps {
 
     constructor(props: GuestProps) {
-        this.email = props.email;
-        this.firstName = props.firstName;
-        this.lastName = props.lastName;
-        this.fullName = props.fullName ? props.fullName : this.firstName + " " + this.lastName;
+        this.email = props.email ? props.email : "";
+        this.firstName = props.firstName ? props.firstName : "";
+        this.lastName = props.lastName ? props.lastName : "";
+        this.fullName = props.fullName ? props.fullName : this.generateFullName();
         this.party = props.party;
         this.foodPreferences = props.foodPreferences ? props.foodPreferences : "";
-        this.rsvpDate = props.rsvpDate;
+        this.rsvpTimestamp = props.rsvpTimestamp ? props.rsvpTimestamp : Date.now();
         this.status = props.status ? props.status : "UNKNOWN";
+        this.id = props.id ? props.id : this.generateID();
     }
 
-    readonly status: RSVPStatus;
+    private generateFullName(): string {
+        let fullName: string = this.firstName + " " + this.lastName;
+        if (this.firstName.length === 0 && this.lastName.length === 0) {
+            // The names were actually blank so just make it an empty string
+            // Because right now it is " "
+            fullName = "";
+        }
 
-    readonly foodPreferences: string;
+        return fullName;
+    }
 
-    readonly rsvpDate: Date;
-
-    readonly email: string;
-
-    get id(): string {
+    private generateID(): string {
         let id: string;
 
         if (this.email) {
@@ -57,6 +61,16 @@ export default class Guest implements GuestProps {
         return id;
     }
 
+    readonly status: RSVPStatus;
+
+    readonly foodPreferences: string;
+
+    readonly rsvpTimestamp: number;
+
+    readonly email: string;
+
+    readonly id: string;
+
     readonly firstName: string;
 
     readonly lastName: string;
@@ -65,12 +79,13 @@ export default class Guest implements GuestProps {
 
     readonly party: string;
 
-    static parse(data: any): Guest | undefined {
+    static parse(data: any): Guest {
 
         if (!data) {
             return undefined;
         }
 
+        // These are pulled in from the CSV as well
         let email = data["EMAIL"] || data["email"];
         let firstName = data["FNAME"] || data["firstName"];
         let lastName = data["LNAME"] || data["lastName"];
@@ -79,6 +94,7 @@ export default class Guest implements GuestProps {
         let status = data["status"];
         let foodPreferences = data["foodPreferences"];
         let fullName = data["fullName"];
+        let id = data["id"];
 
         // A couple of rules.
         // 1. If none of the data exists, return undefined
@@ -100,6 +116,6 @@ export default class Guest implements GuestProps {
             party = lastName + "-" + generateId();
         }
 
-        return new Guest({ email, fullName, firstName, lastName, party, status, foodPreferences });
+        return new Guest({ id, email, fullName, firstName, lastName, party, status, foodPreferences });
     }
 }

@@ -44,13 +44,13 @@ describe("Guest", function () {
             let guest = Guest.parse({PARTY: "Jason-1"});
 
             it("sets the email", function() {
-                expect(guest.email).to.be.undefined;
+                expect(guest.email).to.equal("");
             });
             it("sets the first name", function () {
-                expect(guest.firstName).to.be.undefined;
+                expect(guest.firstName).to.equal("");
             });
             it("sets the last name", function () {
-                expect(guest.lastName).to.be.undefined;
+                expect(guest.lastName).to.equal("");
             });
             it("sets the party", function () {
                 expect(guest.party).to.equal("Jason-1");
