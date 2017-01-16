@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import { Button } from "react-toolbox/lib/button";
 import Input from "react-toolbox/lib/input";
 
-import { getParty, rsvpGuest, setEmail } from "../actions";
+import { getParty, rsvpGuest } from "../actions/party";
+import { setEmail } from "../actions/user";
 import { Col, Row } from "../components/Grid";
-import Guest, { RSVP } from "../models/guest";
+import { RSVP } from "../models/guest";
 import GuestList from "../models/guest-list";
 import { State } from "../reducers";
 
@@ -56,10 +57,11 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
     constructor(props: RSVPPageProps) {
         super(props);
-        // console.log("RSVP constructor");
-        // console.log(props);
+        console.log("RSVP constructor");
+        console.log(props);
         if (props.email) {
             // If we already have an email, get the party
+            console.log("calling getParty()");
             this.props.getParty();
         }
         // if we don't have
@@ -76,8 +78,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
     }
 
     componentWillReceiveProps(nextProps: RSVPPageProps) {
-        // console.log("RSVP willReceiveProps");
-        // console.log(nextProps);
+        console.log("RSVP willReceiveProps");
+        console.log(nextProps);
         if (!this.state.party && !nextProps.error) {
             // if no party, try to get one
             this.props.getParty();
@@ -103,8 +105,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
         }
     }
 
-    onRSVPChange(guest: Guest, rsvp: RSVP) {
-        this.state.rsvps[guest.id] = rsvp;
+    onRSVPChange(rsvp: RSVP) {
+        this.state.rsvps[rsvp.id] = rsvp;
     }
 
     render() {
@@ -122,27 +124,49 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
         return (
             <span>
-                <Row center>
-                    <Col>
-                        <h2>RSVP</h2>
-                        <p> Please respond by February 18 </p>
-                    </Col>
-                </Row>
+
                 {this.props.error ? (
                     <p> {this.props.error.message}</p>
                 ) : undefined}
                 {this.props.party ? (
                     <span>
-                        <ul style={{ paddingLeft: 0 }}>{party}</ul>
-                        <Button raised onClick={this.handleRSVP}> RSVP </Button>
+                        <Row center>
+                            <Col>
+                                <h2>RSVP</h2>
+                                <p>Please respond by February 18</p>
+                            </Col>
+                        </Row>
+                        <Row center>
+                            <Col percentage={80}>
+                                <ul style={{ paddingLeft: 0 }}>{party}</ul>
+                            </Col>
+                        </Row>
+                        <Row center>
+                            <Col>
+                                <Button raised onClick={this.handleRSVP}>
+                                    RSVP
+                                </Button>
+                            </Col>
+                        </Row>
                     </span>
                 ) : undefined}
                 {this.props.user && !this.props.email ? (
-                    <span>
-                        <p> Please enter you email </p>
-                        <Input type="email" label="Email" icon="email" value={this.state.email} onChange={this.handleEmailChange} />
-                        <Button label="RSVP" onClick={this.handleSetEmail} raised primary />
-                    </span>
+                    <Row center>
+                        <Col>
+                            <p> Please enter you email </p>
+                            <Input
+                                type="email"
+                                label="Email"
+                                icon="email"
+                                value={this.state.email}
+                                onChange={this.handleEmailChange} />
+                            <Button
+                                label="RSVP"
+                                onClick={this.handleSetEmail}
+                                raised
+                                primary />
+                        </Col>
+                    </Row>
                 ) : undefined}
             </span>
         );

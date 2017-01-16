@@ -1,4 +1,4 @@
-import { RACE_REGISTRATION_OUTCOME, RaceRegistractionOutcomeAction } from "../actions";
+import { RACE_REGISTRATION_OUTCOME, RaceRegistractionOutcomeAction } from "../actions/race";
 import { RegistrationStatus } from "../models/registration";
 
   export type RaceState = {

@@ -1,13 +1,33 @@
-import * as firebase from "firebase";
+import * as Firebase from "firebase";
 
 import { RegistrationStatus } from "../models/registration";
 
-export function register(name: string, email: string): Promise<RegistrationStatus> {
-    return new Promise(function (then, reject) {
+namespace race {
+    export function register(name: string, email: string): Promise<RegistrationStatus> {
+        return new Promise(function (then, reject) {
 
-        let user = firebase.auth().currentUser;
-        console.log(user);
+            let user = Firebase.auth().currentUser;
+            Firebase.database().ref("users/" + user.uid).update({
+                name,
+                raceEmail: email,
+                race: true
+            }).then(function () {
+                then({ success: true, message: "Great" });
+            });
+        });
+    }
+    export function getRegistration(): Promise<RegistrationStatus> {
+        return new Promise(function (then, reject) {
 
-        then({success: true, message: "Great"});
-    });
+            let user = Firebase.auth().currentUser;
+            Firebase.database().ref("users/" + user.uid).once("value").then(function (snapshot) {
+                let userInfo = snapshot.val();
+                if (userInfo) {
+                    then({ success: true, message: "Great" });
+                }
+            });
+        });
+    }
 }
+
+export default race;

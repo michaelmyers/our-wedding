@@ -3,6 +3,9 @@ import { Link } from "react-router";
 import { AppBar } from "react-toolbox";
 import { Layout, Panel } from "react-toolbox";
 
+import { Col, Row } from "../components/Grid";
+import { WashingtonDC } from "../svg/WashingtonDC";
+
 const style = require("./style.scss");
 
 interface SiteProps {
@@ -54,6 +57,11 @@ class Site extends React.Component<SiteProps, SiteState> {
                     <div className={style.container}>
                         {this.props.children}
                     </div>
+                    <Row center>
+                        <Col style={{padding: 25}}>
+                            <WashingtonDC />
+                        </Col>
+                    </Row>
                 </Panel>
             </Layout>
         );

@@ -7,7 +7,7 @@ import Guest, { RSVP, RSVPStatus } from "../models/guest";
 
 interface GuestRSVPProps {
     guest: Guest;
-    onChange?: (guest: Guest, rsvp: RSVP) => void;
+    onChange?: (rsvp: RSVP) => void;
     onNameChange?: (guest: Guest, fullName: string) => void;
 }
 
@@ -51,7 +51,7 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
 
     updateOnChangeListener(rsvp: RSVP) {
         if (this.props.onChange) {
-            this.props.onChange(this.props.guest, rsvp);
+            this.props.onChange(rsvp);
         }
     }
 

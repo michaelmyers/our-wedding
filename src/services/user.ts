@@ -35,7 +35,7 @@ namespace user {
 
             let emailHash = md5(email.toLowerCase());
 
-            Firebase.database().ref("users/" + user.uid).set({
+            Firebase.database().ref("users/" + user.uid).update({
                 email: email,
                 emailHash: emailHash
             }).then(function () {
