@@ -56,7 +56,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
         }
 
         if (props.name) {
-            this.setState({ ...this.state, name: props.name })
+            this.setState({ ...this.state, name: props.name });
         }
     }
 

@@ -14,7 +14,6 @@ export type RaceAction = RaceRegistractionOutcomeAction | { type: "" };
 export function race(state: RaceState = RACE_INITIAL, action: RaceAction) {
   switch (action.type) {
     case RACE_REGISTRATION_OUTCOME:
-    console.log(action);
       return { ...state, status: action.status };
     default:
       return state;

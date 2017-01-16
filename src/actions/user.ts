@@ -40,7 +40,7 @@ export const SET_NAME: SET_NAME = "SET_NAME";
 export type SetNameAction = {
     type: SET_NAME;
     name: string;
-}
+};
 
 export function setName(name: string) {
     return {
