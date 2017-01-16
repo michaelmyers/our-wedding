@@ -27,8 +27,8 @@ export type RaceRegistractionOutcomeAction = {
 
 export function register(name: string, email: string) {
     return function (dispatch: Redux.Dispatch<void>) {
-        race.register(name, email).then(function(status) {
-            dispatch({type:RACE_REGISTRATION_OUTCOME, status: status});
+        race.register(name, email).then(function (status) {
+            dispatch({ type: RACE_REGISTRATION_OUTCOME, status: status });
         });
     };
 }
