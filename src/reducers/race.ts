@@ -1,4 +1,4 @@
-import { RACE_REGISTRATION_OUTCOME, RaceRegistractionOutcomeAction } from "../actions";
+import { RACE_REGISTRATION_OUTCOME, RaceRegistractionOutcomeAction } from "../actions/race";
 import { RegistrationStatus } from "../models/registration";
 
   export type RaceState = {
@@ -14,6 +14,7 @@ export type RaceAction = RaceRegistractionOutcomeAction | { type: "" };
 export function race(state: RaceState = RACE_INITIAL, action: RaceAction) {
   switch (action.type) {
     case RACE_REGISTRATION_OUTCOME:
+    console.log(action);
       return { ...state, status: action.status };
     default:
       return state;

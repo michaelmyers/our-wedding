@@ -7,18 +7,17 @@ import { Provider } from "react-redux";
 import { IndexRoute, Route, Router, useRouterHistory } from "react-router";
 import { replace, syncHistoryWithStore } from "react-router-redux";
 
+import { setEmail, setUser } from "./actions/user";
 import Site from "./frames/Site";
 import AreaInformationPage from "./pages/AreaInformationPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import RaceRegistrationPage from "./pages/RaceRegistrationPage";
-import RegistryPage from "./pages/Registry";
+import RegistryPage from "./pages/RegistryPage";
 import RSVPPage from "./pages/RSVPPage";
 import rootReducer from "./reducers";
 import configureStore from "./store";
 import { getParameterValue } from "./utils";
-
-import { setEmail, setUser } from "./actions";
 
 console.log("v" + VERSION + "-" + BUILD_NUMBER);
 
@@ -45,16 +44,17 @@ Firebase.initializeApp(FIREBASE_CONFIG);
 Firebase.auth().onAuthStateChanged(function (user: Firebase.User) {
     let firebaseInitializeTime = +new Date() - +firebaseInitializeTimer;
     console.log("Firebase took " + firebaseInitializeTime + "ms to initialize");
+    console.log(user);
 
     if (!user) {
         Firebase.auth().signInAnonymously();
     } else {
         store.dispatch(setUser(user));
-    }
 
-    let email = getParameterValue("email");
-    if (email && user) {
-        store.dispatch(setEmail(email));
+        let email = getParameterValue("email");
+        if (email) {
+            store.dispatch(setEmail(email));
+        }
     }
 
     if (getParameterValue("reset")) {

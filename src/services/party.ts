@@ -25,24 +25,31 @@ namespace party {
             // We need the email hash of the user.
             let userRef = Firebase.database().ref("users/" + user.uid);
             userRef.once("value").then(function (snapshot) {
+                let userInfo = snapshot.val();
 
-                let emailHash = snapshot.val().emailHash;
-                let mypartyRef = Firebase.database().ref("myparty/" + emailHash);
-                mypartyRef.once("value").then(function (snapshot) {
-                    let party = snapshot.val();
+                if (userInfo) {
+                    let emailHash = userInfo.emailHash;
+                    let mypartyRef = Firebase.database().ref("myparty/" + emailHash);
+                    mypartyRef.once("value").then(function (snapshot) {
+                        let party = snapshot.val();
 
-                    if (!party) {
-                        let errorMessage = "The provided email is not on the list";
-                        console.info(errorMessage);
-                        reject(new Error(errorMessage));
-                    } else {
-                        let partiesRef = Firebase.database().ref("parties/" + party);
-                        partiesRef.once("value").then(function (snapshot) {
-                            let guestList = GuestList.parse(snapshot.val());
-                            then(guestList);
-                        });
-                    }
-                });
+                        if (!party) {
+                            let errorMessage = "The provided email is not on the list";
+                            console.info(errorMessage);
+                            reject(new Error(errorMessage));
+                        } else {
+                            let partiesRef = Firebase.database().ref("parties/" + party);
+                            partiesRef.once("value").then(function (snapshot) {
+                                let guestList = GuestList.parse(snapshot.val());
+                                then(guestList);
+                            });
+                        }
+                    });
+                } else {
+                    let errorMessage = "We couldn't not find any information about you.";
+                    console.info(errorMessage);
+                    reject(new Error(errorMessage));
+                }
             });
         });
     }
