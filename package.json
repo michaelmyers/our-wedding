@@ -12,6 +12,8 @@
     "coveralls": "npm run coverage && ./node_modules/coveralls/bin/coveralls.js < coverage/lcov-ts.info",
     "test": "mocha 'src/**/*.test.js'",
     "start": "node server",
+    "build": "NODE_ENV=production webpack",
+    "predeploy": "npm run build",
     "deploy": "node bin deploy"
   },
   "author": "",
