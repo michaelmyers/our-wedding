@@ -58,8 +58,18 @@ class Site extends React.Component<SiteProps, SiteState> {
                         {this.props.children}
                     </div>
                     <Row center>
-                        <Col style={{padding: 25}}>
+                        <Col style={{ padding: 25 }}>
                             <WashingtonDC />
+                        </Col>
+                    </Row>
+                    <Row center>
+                        <Col>
+                            <span> Annie & Michael </span>
+                        </Col>
+                    </Row>
+                    <Row center>
+                        <Col>
+                            <span> March 18, 2017 </span>
                         </Col>
                     </Row>
                 </Panel>
