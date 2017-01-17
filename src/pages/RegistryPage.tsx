@@ -1,6 +1,4 @@
 import * as React from "react";
-// import { Button } from "react-toolbox/lib/button";
-// import { Card, CardActions, CardMedia } from "react-toolbox/lib/card";
 import { Col, Row } from "../components/Grid";
 
 const style = require("../styles/main.scss");
