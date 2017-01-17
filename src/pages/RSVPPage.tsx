@@ -57,8 +57,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
     constructor(props: RSVPPageProps) {
         super(props);
-        console.log("RSVP constructor");
-        console.log(props);
+        // console.log("RSVP constructor");
+        // console.log(props);
         if (props.email) {
             // If we already have an email, get the party
             console.log("calling getParty()");
@@ -78,8 +78,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
     }
 
     componentWillReceiveProps(nextProps: RSVPPageProps) {
-        console.log("RSVP willReceiveProps");
-        console.log(nextProps);
+        // console.log("RSVP willReceiveProps");
+        // console.log(nextProps);
         if (!this.state.party && !nextProps.error) {
             // if no party, try to get one
             this.props.getParty();
@@ -124,9 +124,12 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
         return (
             <span>
-
                 {this.props.error ? (
-                    <p> {this.props.error.message}</p>
+                    <Row center>
+                        <Col percentage={80}>
+                            <p> {this.props.error.message}</p>
+                        </Col>
+                    </Row>
                 ) : undefined}
                 {this.props.party ? (
                     <span>
@@ -137,22 +140,25 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                             </Col>
                         </Row>
                         <Row center>
-                            <Col percentage={80}>
-                                <ul style={{ paddingLeft: 0 }}>{party}</ul>
+                            <Col percentage={75}>
+                                <ul style={{ paddingLeft: 0 }}>
+                                    {party}
+                                </ul>
                             </Col>
                         </Row>
                         <Row center>
                             <Col>
-                                <Button raised onClick={this.handleRSVP}>
-                                    RSVP
-                                </Button>
+                                <Button
+                                    label="RSVP"
+                                    raised
+                                    onClick={this.handleRSVP} />
                             </Col>
                         </Row>
                     </span>
                 ) : undefined}
                 {this.props.user && !this.props.email ? (
                     <Row center>
-                        <Col>
+                        <Col percentage={80}>
                             <p> Please enter you email </p>
                             <Input
                                 type="email"
@@ -162,9 +168,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                                 onChange={this.handleEmailChange} />
                             <Button
                                 label="RSVP"
-                                onClick={this.handleSetEmail}
                                 raised
-                                primary />
+                                onClick={this.handleSetEmail} />
                         </Col>
                     </Row>
                 ) : undefined}

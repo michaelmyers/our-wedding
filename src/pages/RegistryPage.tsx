@@ -18,7 +18,7 @@ export default class RegistryPage extends React.Component<any, any> {
                     </Col>
                 </Row>
                 <Row center>
-                    <Col percentage={45} style={{ padding: 20 }}>
+                    <Col percentage={48}>
                         <a
                             className={style.link}
                             href="https://secure.williams-sonoma.com/registry/w9djtcnk2b/access-registry.html"
@@ -29,7 +29,7 @@ export default class RegistryPage extends React.Component<any, any> {
                             />
                         </a>
                     </Col>
-                    <Col percentage={45} style={{ padding: 20 }}>
+                    <Col percentage={48}>
                         <a
                             className={style.link}
                             href="https://secure.williams-sonoma.com/registry/w9djtcnk2b/access-registry.html"

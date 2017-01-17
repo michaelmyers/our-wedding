@@ -84,7 +84,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                     </Col>
                 </Row>
                 <Row center>
-                    <Col percentage={80}>
+                    <Col percentage={90}>
                         <p>
                             Registration is open until 3/11/17.
                             <br />

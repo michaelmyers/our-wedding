@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link } from "react-router";
-import { AppBar } from "react-toolbox";
 import { Layout, Panel } from "react-toolbox";
 
 import { Col, Row } from "../components/Grid";
@@ -47,13 +46,25 @@ class Site extends React.Component<SiteProps, SiteState> {
         return (
             <Layout>
                 <Panel>
-                    <AppBar className={style.appBar}>
-                        <Link className={style.navLink} to="/"> Wedding</Link>
-                        <Link className={style.navLink} to="/washington-dc"> Washington, D.C.</Link>
-                        <Link className={style.navLink} to="/registry"> Registry</Link>
-                        <Link className={style.navLink} to="/rsvp"> RSVP</Link>
-                        <Link className={style.navLink} to="/race"> 5k</Link>
-                    </AppBar>
+                    <header>
+                        <Row center className={style.appBar}>
+                            <Col middle>
+                                <Link className={style.navLink} to="/">Details</Link>
+                            </Col>
+                            <Col middle>
+                                <Link className={style.navLink} to="/rsvp">RSVP</Link>
+                            </Col>
+                            <Col middle>
+                                <Link className={style.navLink} to="/registry">Registry</Link>
+                            </Col>
+                            <Col middle>
+                                <Link className={style.navLink} to="/race">5k</Link>
+                            </Col>
+                            <Col middle>
+                                <Link className={style.navLink} to="/washington-dc">D.C.</Link>
+                            </Col>
+                        </Row>
+                    </header>
                     <div className={style.container}>
                         {this.props.children}
                     </div>
@@ -64,12 +75,12 @@ class Site extends React.Component<SiteProps, SiteState> {
                     </Row>
                     <Row center>
                         <Col>
-                            <span> Annie & Michael </span>
+                            <span className={style.footer}>Annie & Michael</span>
                         </Col>
                     </Row>
                     <Row center>
                         <Col>
-                            <span> March 18, 2017 </span>
+                            <span className={style.footer}>March 18, 2017</span>
                         </Col>
                     </Row>
                 </Panel>

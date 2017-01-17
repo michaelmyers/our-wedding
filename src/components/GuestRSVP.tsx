@@ -4,6 +4,7 @@ import Input from "react-toolbox/lib/input";
 
 import { Col, Row } from "../components/Grid";
 import Guest, { RSVP, RSVPStatus } from "../models/guest";
+const checkboxTheme = require("../styles/checkbox.scss");
 
 interface GuestRSVPProps {
     guest: Guest;
@@ -108,7 +109,17 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
 
     render() {
         return (
-            <span style={{ backgroundColor: "#fde6d4" }}>
+            <div
+                style={{
+                    backgroundColor: "rgba(46, 46, 46, 0.04)",
+                    padding: "10px",
+                    marginTop: "10px",
+                    marginBottom: "10px",
+                    borderBottomLeftRadius: "10px",
+                    borderTopLeftRadius: "10px",
+                    borderBottomRightRadius: "10px",
+                    borderTopRightRadius: "10px"
+                }}>
                 <Row>
                     <Col>
                         <Input
@@ -119,19 +130,21 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col percentage={45}>
                         <Checkbox
+                            theme={checkboxTheme}
                             checked={this.state.accepts}
                             label="Delightfully Accepts"
                             onChange={this.updateAccept}
-                            />
+                        />
                     </Col>
-                    <Col>
+                    <Col percentage={45}>
                         <Checkbox
+                            theme={checkboxTheme}
                             checked={this.state.declines}
                             label="Regretfully Declines"
                             onChange={this.updateDecline}
-                            />
+                        />
                     </Col>
                 </Row>
                 <Row>
@@ -141,9 +154,9 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                             type="text"
                             value={this.state.foodPreferences}
                             onChange={this.updateFoodPreferences} />
-                    </Col >
-                </Row >
-            </span>
+                    </Col>
+                </Row>
+            </div>
         );
     }
 }
