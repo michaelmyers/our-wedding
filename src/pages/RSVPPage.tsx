@@ -126,7 +126,11 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
             <span>
 
                 {this.props.error ? (
-                    <p> {this.props.error.message}</p>
+                    <Row center>
+                        <Col percentage={80}>
+                            <p> {this.props.error.message}</p>
+                        </Col>
+                    </Row>
                 ) : undefined}
                 {this.props.party ? (
                     <span>
@@ -143,16 +147,17 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                         </Row>
                         <Row center>
                             <Col>
-                                <Button raised onClick={this.handleRSVP}>
-                                    RSVP
-                                </Button>
+                                <Button
+                                    label="RSVP"
+                                    raised
+                                    onClick={this.handleRSVP} />
                             </Col>
                         </Row>
                     </span>
                 ) : undefined}
                 {this.props.user && !this.props.email ? (
                     <Row center>
-                        <Col>
+                        <Col percentage={80}>
                             <p> Please enter you email </p>
                             <Input
                                 type="email"
@@ -162,9 +167,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                                 onChange={this.handleEmailChange} />
                             <Button
                                 label="RSVP"
-                                onClick={this.handleSetEmail}
                                 raised
-                                primary />
+                                onClick={this.handleSetEmail} />
                         </Col>
                     </Row>
                 ) : undefined}
