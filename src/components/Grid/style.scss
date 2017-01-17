@@ -10,6 +10,9 @@
     justify-content: center;
     text-align: center;
 }
+.middle {
+  align-self: center;
+}
 .row .col {
   flex: 1;
   // useful for debugging background: salmon;

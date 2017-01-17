@@ -108,8 +108,17 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
 
     render() {
         return (
-            <span style={{ backgroundColor: "#fde6d4" }}>
-                <Row>
+            <div
+                style={{
+                    backgroundColor: "rgba(46, 46, 46, 0.04)",
+                    padding: "10px",
+                    margin: "10px",
+                    borderBottomLeftRadius: "10px",
+                    borderTopLeftRadius: "10px",
+                    borderBottomRightRadius: "10px",
+                    borderTopRightRadius: "10px"
+                }}>
+                <Row center>
                     <Col>
                         <Input
                             hint="Guest Name"
@@ -118,32 +127,32 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                             onChange={this.updateName} />
                     </Col>
                 </Row>
-                <Row>
+                <Row center>
                     <Col>
                         <Checkbox
                             checked={this.state.accepts}
                             label="Delightfully Accepts"
                             onChange={this.updateAccept}
-                            />
+                        />
                     </Col>
                     <Col>
                         <Checkbox
                             checked={this.state.declines}
                             label="Regretfully Declines"
                             onChange={this.updateDecline}
-                            />
+                        />
                     </Col>
                 </Row>
-                <Row>
+                <Row center>
                     <Col>
                         <Input
                             hint="Food Preferences?"
                             type="text"
                             value={this.state.foodPreferences}
                             onChange={this.updateFoodPreferences} />
-                    </Col >
-                </Row >
-            </span>
+                    </Col>
+                </Row>
+            </div>
         );
     }
 }

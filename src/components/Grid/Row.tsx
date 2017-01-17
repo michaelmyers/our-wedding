@@ -5,12 +5,13 @@ const style = require("./style.scss");
 
 interface RowProps {
     center?: boolean;
+    className?: string;
 }
 
 export default class Row extends React.Component<RowProps, any> {
 
     classNames() {
-        return classnames(style.row, {
+        return classnames(this.props.className, style.row, {
             [style.center]: this.props.center
         });
     }

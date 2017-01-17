@@ -1,13 +1,21 @@
+import * as classnames from "classnames";
 import * as React from "react";
 
 const style = require("./style.scss");
 
 interface ColProps {
+    middle?: boolean;
     percentage?: number;
     style?: React.CSSProperties;
 }
 
 export default class Col extends React.Component<ColProps, any> {
+
+    classNames() {
+        return classnames(style.col, {
+            [style.middle]: this.props.middle
+        });
+    }
 
     style(): React.CSSProperties {
 
@@ -21,7 +29,7 @@ export default class Col extends React.Component<ColProps, any> {
     }
     render() {
         return (
-            <div className={style.col} style={this.style()}> {this.props.children} </div>
+            <div className={this.classNames()} style={this.style()}> {this.props.children} </div>
         );
     }
 
