@@ -57,8 +57,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
     constructor(props: RSVPPageProps) {
         super(props);
-        console.log("RSVP constructor");
-        console.log(props);
+        // console.log("RSVP constructor");
+        // console.log(props);
         if (props.email) {
             // If we already have an email, get the party
             console.log("calling getParty()");
@@ -78,8 +78,8 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
     }
 
     componentWillReceiveProps(nextProps: RSVPPageProps) {
-        console.log("RSVP willReceiveProps");
-        console.log(nextProps);
+        // console.log("RSVP willReceiveProps");
+        // console.log(nextProps);
         if (!this.state.party && !nextProps.error) {
             // if no party, try to get one
             this.props.getParty();
@@ -124,7 +124,6 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
         return (
             <span>
-
                 {this.props.error ? (
                     <Row center>
                         <Col percentage={80}>
@@ -141,8 +140,10 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                             </Col>
                         </Row>
                         <Row center>
-                            <Col percentage={80}>
-                                <ul style={{ paddingLeft: 0 }}>{party}</ul>
+                            <Col percentage={75}>
+                                <ul style={{ paddingLeft: 0 }}>
+                                    {party}
+                                </ul>
                             </Col>
                         </Row>
                         <Row center>

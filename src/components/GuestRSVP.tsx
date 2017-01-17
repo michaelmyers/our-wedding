@@ -4,6 +4,7 @@ import Input from "react-toolbox/lib/input";
 
 import { Col, Row } from "../components/Grid";
 import Guest, { RSVP, RSVPStatus } from "../models/guest";
+const checkboxTheme = require("../styles/checkbox.scss");
 
 interface GuestRSVPProps {
     guest: Guest;
@@ -112,13 +113,14 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                 style={{
                     backgroundColor: "rgba(46, 46, 46, 0.04)",
                     padding: "10px",
-                    margin: "10px",
+                    marginTop: "10px",
+                    marginBottom: "10px",
                     borderBottomLeftRadius: "10px",
                     borderTopLeftRadius: "10px",
                     borderBottomRightRadius: "10px",
                     borderTopRightRadius: "10px"
                 }}>
-                <Row center>
+                <Row>
                     <Col>
                         <Input
                             hint="Guest Name"
@@ -127,23 +129,25 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                             onChange={this.updateName} />
                     </Col>
                 </Row>
-                <Row center>
-                    <Col>
+                <Row>
+                    <Col percentage={45}>
                         <Checkbox
+                            theme={checkboxTheme}
                             checked={this.state.accepts}
                             label="Delightfully Accepts"
                             onChange={this.updateAccept}
                         />
                     </Col>
-                    <Col>
+                    <Col percentage={45}>
                         <Checkbox
+                            theme={checkboxTheme}
                             checked={this.state.declines}
                             label="Regretfully Declines"
                             onChange={this.updateDecline}
                         />
                     </Col>
                 </Row>
-                <Row center>
+                <Row>
                     <Col>
                         <Input
                             hint="Food Preferences?"
