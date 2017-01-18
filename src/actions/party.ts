@@ -42,6 +42,22 @@ export function getParty() {
     };
 }
 
+export type RSVP_SUCCESS = "RSVP_SUCCESS";
+export const RSVP_SUCCESS: RSVP_SUCCESS = "RSVP_SUCCESS";
+
+export type RSVPSuccessAction = {
+    type: RSVP_SUCCESS
+};
+
 export function rsvpGuest(rsvp: RSVP) {
-    party.rsvpGuest(rsvp);
+    return function (dispatch: Redux.Dispatch<void>) {
+        party.rsvpGuest(rsvp).then(function() {
+            dispatch({type: RSVP_SUCCESS});
+            return party.getParty().then(function(guests) {
+                dispatch(setParty(guests));
+            });
+        }).catch(function(error) {
+            dispatch(partyError(error));
+        });
+    };
 }

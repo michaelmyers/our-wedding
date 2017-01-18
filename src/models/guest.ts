@@ -7,7 +7,7 @@ export type RSVPStatus = "ATTENDING" | "DECLINED" | "UNKNOWN";
 export interface RSVP {
     fullName?: string;
     status?: RSVPStatus;
-    foodPreferences?: string;
+    comments?: string;
     party?: string;
     id?: string;
 }
@@ -27,8 +27,8 @@ export default class Guest implements GuestProps {
         this.lastName = props.lastName ? props.lastName : "";
         this.fullName = props.fullName ? props.fullName : this.generateFullName();
         this.party = props.party;
-        this.foodPreferences = props.foodPreferences ? props.foodPreferences : "";
-        this.rsvpTimestamp = props.rsvpTimestamp ? props.rsvpTimestamp : Date.now();
+        this.comments = props.comments ? props.comments : "";
+        this.rsvpTimestamp = props.rsvpTimestamp ? props.rsvpTimestamp : -1;
         this.status = props.status ? props.status : "UNKNOWN";
         this.id = props.id ? props.id : this.generateID();
     }
@@ -63,7 +63,7 @@ export default class Guest implements GuestProps {
 
     readonly status: RSVPStatus;
 
-    readonly foodPreferences: string;
+    readonly comments: string;
 
     readonly rsvpTimestamp: number;
 
@@ -92,9 +92,10 @@ export default class Guest implements GuestProps {
         let party = data["PARTY"] || data["party"];
 
         let status = data["status"];
-        let foodPreferences = data["foodPreferences"];
+        let comments = data["comments"];
         let fullName = data["fullName"];
         let id = data["id"];
+        let rsvpTimestamp = data["rsvpTimestamp"];
 
         // A couple of rules.
         // 1. If none of the data exists, return undefined
@@ -116,6 +117,6 @@ export default class Guest implements GuestProps {
             party = lastName + "-" + generateId();
         }
 
-        return new Guest({ id, email, fullName, firstName, lastName, party, status, foodPreferences });
+        return new Guest({ id, email, fullName, firstName, lastName, party, status, comments, rsvpTimestamp });
     }
 }

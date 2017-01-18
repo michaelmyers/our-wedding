@@ -1,6 +1,8 @@
 import {
   PARTY_ERROR,
   PartyErrorAction,
+  RSVP_SUCCESS,
+  RSVPSuccessAction,
   SET_PARTY,
   SetPartyAction
 } from "../actions/party";
@@ -21,6 +23,7 @@ export type UserState = {
   emailHash: string;
   party: GuestList;
   partyError: Error;
+  rsvpSuccess: boolean;
 };
 
 const USER_INITIAL: UserState = {
@@ -29,10 +32,11 @@ const USER_INITIAL: UserState = {
   email: undefined,
   emailHash: undefined,
   party: undefined,
-  partyError: undefined
+  partyError: undefined,
+  rsvpSuccess: false,
 };
 
-export type UserAction = SetUserAction | SetPartyAction | PartyErrorAction | SetEmailAction | SetNameAction | { type: "" };
+export type UserAction = SetUserAction | SetPartyAction | PartyErrorAction | SetEmailAction | SetNameAction | RSVPSuccessAction | { type: "" };
 
 export function user(state: UserState = USER_INITIAL, action: UserAction) {
   switch (action.type) {
@@ -43,9 +47,11 @@ export function user(state: UserState = USER_INITIAL, action: UserAction) {
     case SET_NAME:
     return { ...state, name: action.name};
     case SET_PARTY:
-      return { ...state, party: action.party };
+      return { ...state, party: action.party, partyError: undefined  };
     case PARTY_ERROR:
-      return { ...state, partyError: action.error };
+      return { ...state, rsvpSuccess: false, partyError: action.error };
+    case RSVP_SUCCESS:
+      return { ...state, rsvpSuccess: true, partyError: undefined };
     default:
       return state;
   }

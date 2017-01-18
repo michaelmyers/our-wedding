@@ -4,17 +4,26 @@ import { RSVP } from "../models/guest";
 import GuestList from "../models/guest-list";
 
 namespace party {
-
     export function rsvpGuest(rsvp: RSVP) {
         return new Promise(function (then, reject) {
-            let userRef = Firebase.database().ref("parties/" + rsvp.party + "/" + rsvp.id);
 
-            userRef.update({
-                status: rsvp.status,
-                fullName: rsvp.fullName,
-                foodPreferences: rsvp.foodPreferences,
-                rsvpTimestamp: Date.now()
-            });
+            // Make sure the status is not UNKNOWN
+            if (rsvp.status === "UNKNOWN" && rsvp.fullName.length > 0) {
+                reject(Error("Please RSVP for " + rsvp.fullName));
+            } else {
+                let userRef = Firebase.database().ref("parties/" + rsvp.party + "/" + rsvp.id);
+
+                userRef.update({
+                    status: rsvp.status,
+                    fullName: rsvp.fullName,
+                    comments: rsvp.comments,
+                    rsvpTimestamp: Date.now()
+                }).then(function () {
+                    then();
+                }).catch(function (error) {
+                    reject(error);
+                });
+            }
         });
     }
     export function getParty(): Promise<GuestList> {
@@ -34,7 +43,7 @@ namespace party {
                         let party = snapshot.val();
 
                         if (!party) {
-                            let errorMessage = "The provided email is not on the list";
+                            let errorMessage = "The provided email is not on the list.";
                             console.info(errorMessage);
                             reject(new Error(errorMessage));
                         } else {
