@@ -18,6 +18,8 @@ export default class HomePage extends React.Component<any, any> {
                     <Col>
                         <h4>Schedule</h4>
                         <h4>Venue</h4>
+                        <h4>Menu</h4>
+                        <h4>Entertainment</h4>
                     </Col>
                 </Row>
             </span>
