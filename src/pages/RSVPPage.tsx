@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router";
 import { Button } from "react-toolbox/lib/button";
 import Input from "react-toolbox/lib/input";
 
@@ -15,12 +16,13 @@ import GuestRSVP from "../components/GuestRSVP";
 interface RSVPPageProps {
     setEmail: (email: string) => (dispatch: Redux.Dispatch<any>) => void;
     getParty: () => (dispatch: Redux.Dispatch<any>) => void;
-    rsvpGuest: (rsvp: RSVP) => void;
+    rsvpGuest: (rsvp: RSVP) => (dispatch: Redux.Dispatch<any>) => void;
     user: firebase.User;
     email: string;
     emailHash: string;
     party: GuestList;
     error: Error;
+    rsvpSuccess: boolean;
 }
 
 interface RSVPPageState {
@@ -35,7 +37,8 @@ function mapStateToProps(state: State) {
         email: state.user.email,
         emailHash: state.user.emailHash,
         party: state.user.party,
-        error: state.user.partyError
+        error: state.user.partyError,
+        rsvpSuccess: state.user.rsvpSuccess
     };
 }
 
@@ -48,7 +51,7 @@ function mapDispatchToProps(dispatch: Redux.Dispatch<any>) {
             return dispatch(getParty());
         },
         rsvpGuest: function (rsvp: RSVP) {
-            rsvpGuest(rsvp);
+            return dispatch(rsvpGuest(rsvp));
         }
     };
 }
@@ -61,7 +64,6 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
         // console.log(props);
         if (props.email) {
             // If we already have an email, get the party
-            console.log("calling getParty()");
             this.props.getParty();
         }
         // if we don't have
@@ -124,13 +126,6 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
         return (
             <span>
-                {this.props.error ? (
-                    <Row center>
-                        <Col percentage={80}>
-                            <p> {this.props.error.message}</p>
-                        </Col>
-                    </Row>
-                ) : undefined}
                 {this.props.party ? (
                     <span>
                         <Row center>
@@ -156,10 +151,25 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                         </Row>
                     </span>
                 ) : undefined}
+                {this.props.rsvpSuccess ? (
+                    <Row center>
+                        <Col>
+                            <h4>Thank you for your RSVP!</h4>
+                            <h4>Be sure to register for the <Link to="/race">5k!</Link></h4>
+                        </Col>
+                    </Row>
+                ) : undefined}
+                {this.props.error ? (
+                    <Row center>
+                        <Col percentage={80}>
+                            <h4 style={{color: "#FF5252"}}>{this.props.error.message}</h4>
+                        </Col>
+                    </Row>
+                ) : undefined}
                 {this.props.user && !this.props.email ? (
                     <Row center>
                         <Col percentage={80}>
-                            <p> Please enter you email </p>
+                            <p> Please enter you email: </p>
                             <Input
                                 type="email"
                                 label="Email"

@@ -1,3 +1,4 @@
+import * as moment from "moment";
 import * as React from "react";
 import Checkbox from "react-toolbox/lib/checkbox";
 import Input from "react-toolbox/lib/input";
@@ -40,13 +41,13 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
             status: props.guest.status,
             accepts,
             declines,
-            foodPreferences: props.guest.foodPreferences
+            comments: props.guest.comments
         };
 
         this.updateAccept = this.updateAccept.bind(this);
         this.updateDecline = this.updateDecline.bind(this);
         this.updateName = this.updateName.bind(this);
-        this.updateFoodPreferences = this.updateFoodPreferences.bind(this);
+        this.updateComments = this.updateComments.bind(this);
         this.updateOnChangeListener = this.updateOnChangeListener.bind(this);
     }
 
@@ -56,8 +57,8 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
         }
     }
 
-    updateFoodPreferences(foodPreferences: string) {
-        let newState = { ...this.state, foodPreferences };
+    updateComments(comments: string) {
+        let newState = { ...this.state, comments };
         this.updateOnChangeListener(newState);
         this.setState(newState);
     }
@@ -134,7 +135,7 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                         <Checkbox
                             theme={checkboxTheme}
                             checked={this.state.accepts}
-                            label="Delightfully Accepts"
+                            label="Happily Accepts"
                             onChange={this.updateAccept}
                         />
                     </Col>
@@ -150,12 +151,19 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                 <Row>
                     <Col>
                         <Input
-                            hint="Food Preferences?"
+                            hint="Food Preferences? Comments?"
                             type="text"
-                            value={this.state.foodPreferences}
-                            onChange={this.updateFoodPreferences} />
+                            value={this.state.comments}
+                            onChange={this.updateComments} />
                     </Col>
                 </Row>
+                {this.props.guest.rsvpTimestamp > 0 ? (
+                    <Row>
+                        <Col>
+                            <span>RSVPed {moment(this.props.guest.rsvpTimestamp).fromNow()} </span>
+                        </Col>
+                    </Row>
+                ) : undefined }
             </div>
         );
     }
