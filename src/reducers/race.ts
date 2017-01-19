@@ -1,7 +1,7 @@
 import {
   RACE_REGISTRATION_OUTCOME,
-  SET_RACE_REGISTRATION,
   RaceRegistractionOutcomeAction,
+  SET_RACE_REGISTRATION,
   SetRaceRegistrationAction
 } from "../actions/race";
 import { Registration, RegistrationStatus } from "../models/registration";
