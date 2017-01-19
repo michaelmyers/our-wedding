@@ -1,20 +1,29 @@
-import { RACE_REGISTRATION_OUTCOME, RaceRegistractionOutcomeAction } from "../actions/race";
-import { RegistrationStatus } from "../models/registration";
+import {
+  RACE_REGISTRATION_OUTCOME,
+  RaceRegistractionOutcomeAction,
+  SET_RACE_REGISTRATION,
+  SetRaceRegistrationAction
+} from "../actions/race";
+import { Registration, RegistrationStatus } from "../models/registration";
 
-  export type RaceState = {
-    status: RegistrationStatus;
-  };
-
-const RACE_INITIAL: RaceState = {
-  status: undefined
+export type RaceState = {
+  status: RegistrationStatus;
+  registration: Registration;
 };
 
-export type RaceAction = RaceRegistractionOutcomeAction | { type: "" };
+const RACE_INITIAL: RaceState = {
+  status: undefined,
+  registration: undefined
+};
+
+export type RaceAction = SetRaceRegistrationAction | RaceRegistractionOutcomeAction | { type: "" };
 
 export function race(state: RaceState = RACE_INITIAL, action: RaceAction) {
   switch (action.type) {
     case RACE_REGISTRATION_OUTCOME:
       return { ...state, status: action.status };
+    case SET_RACE_REGISTRATION:
+      return { ...state, registration: action.registration };
     default:
       return state;
   }

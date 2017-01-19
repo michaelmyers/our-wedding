@@ -1,19 +1,28 @@
 {
   "rules": {
-    "users" : {
+    "users": {
       "$userID": {
         ".read": "auth.uid==$userID",
         ".write": "auth.uid==$userID"
       }
     },
-    "myparty": {
-        "$emailHash": {
-          ".read": "root.child('users').child(auth.uid).child('emailHash').val() === $emailHash"
-        }
+    // Secondary event registration information
+    "secondary": {
+      "$userID": {
+        ".read": "auth.uid==$userID",
+        ".write": "auth.uid==$userID"
+      }
     },
+    // Stores what party the user is in
+    "myparty": {
+      "$emailHash": {
+        ".read": "root.child('users').child(auth.uid).child('emailHash').val() === $emailHash"
+      }
+    },
+    // Party information, arranged by party ID.
     "parties": {
       "$partyID": {
-         // If they are a member of this source, they the can go right in.
+        // If they are a member of this source, they the can go right in.
         ".read": "data.child(root.child('users').child(auth.uid).child('emailHash').val()).exists()",
         // If they are a member they can write
         ".write": "data.child(root.child('users').child(auth.uid).child('emailHash').val()).exists()"

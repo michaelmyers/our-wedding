@@ -7,11 +7,13 @@ import Input from "react-toolbox/lib/input";
 import { getParty, rsvpGuest } from "../actions/party";
 import { setEmail } from "../actions/user";
 import { Col, Row } from "../components/Grid";
+import GuestRSVP from "../components/GuestRSVP";
 import { RSVP } from "../models/guest";
 import GuestList from "../models/guest-list";
 import { State } from "../reducers";
 
-import GuestRSVP from "../components/GuestRSVP";
+let buttonStyle = require("../styles/button");
+let inputStyle = require("../styles/input");
 
 interface RSVPPageProps {
     setEmail: (email: string) => (dispatch: Redux.Dispatch<any>) => void;
@@ -60,8 +62,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
     constructor(props: RSVPPageProps) {
         super(props);
-        // console.log("RSVP constructor");
-        // console.log(props);
+
         if (props.email) {
             // If we already have an email, get the party
             this.props.getParty();
@@ -144,6 +145,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                         <Row center>
                             <Col>
                                 <Button
+                                    theme={buttonStyle}
                                     label="RSVP"
                                     raised
                                     onClick={this.handleRSVP} />
@@ -171,12 +173,14 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                         <Col percentage={80}>
                             <p> Please enter you email: </p>
                             <Input
+                                theme={inputStyle}
                                 type="email"
                                 label="Email"
                                 icon="email"
                                 value={this.state.email}
                                 onChange={this.handleEmailChange} />
                             <Button
+                                theme={buttonStyle}
                                 label="RSVP"
                                 raised
                                 onClick={this.handleSetEmail} />

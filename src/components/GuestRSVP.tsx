@@ -160,7 +160,7 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                 {this.props.guest.rsvpTimestamp > 0 ? (
                     <Row>
                         <Col>
-                            <span>RSVPed {moment(this.props.guest.rsvpTimestamp).fromNow()} </span>
+                            <p style={{fontSize: "0.8em"}}>RSVP received {moment(this.props.guest.rsvpTimestamp).fromNow()} </p>
                         </Col>
                     </Row>
                 ) : undefined }
