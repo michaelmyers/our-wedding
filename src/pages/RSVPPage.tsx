@@ -60,8 +60,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
 
     constructor(props: RSVPPageProps) {
         super(props);
-        // console.log("RSVP constructor");
-        // console.log(props);
+
         if (props.email) {
             // If we already have an email, get the party
             this.props.getParty();
