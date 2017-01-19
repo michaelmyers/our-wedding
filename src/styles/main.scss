@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro|Archivo+Narrow');
+
+$nav-font: 'Archivo Narrow', sans-serif;
+$header-font: 'Merriweather', serif;
+$paragraph-font: 'Source Sans Pro', sans-serif;
+
+$header-background-color: #757575;
+$header-text-color: #fde6d4;
 
 .link:hover {
         opacity: 0.50;

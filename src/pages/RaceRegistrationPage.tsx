@@ -9,6 +9,9 @@ import { Col, Row } from "../components/Grid";
 import { Registration, RegistrationStatus } from "../models/registration";
 import { State } from "../reducers";
 
+let buttonStyle = require("../styles/button");
+let inputStyle = require("../styles/input");
+
 interface RaceRegistrationPageProps extends React.Props<any> {
     status: RegistrationStatus;
     registration: Registration;
@@ -125,6 +128,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                         </p>
                         <section>
                             <Input
+                                theme={inputStyle}
                                 type="text"
                                 label="Name for Bib"
                                 name="name"
@@ -132,6 +136,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                                 value={this.state.registration.name}
                                 onChange={this.handleNameChange} />
                             <Input
+                                theme={inputStyle}
                                 type="email"
                                 label="Email"
                                 icon="email"
@@ -149,7 +154,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                 ) : undefined}
                 <Row center>
                     <Col>
-                        <Button label="Register" onClick={this.handleRegister} raised />
+                        <Button theme={buttonStyle} label="Register" onClick={this.handleRegister} raised />
                     </Col>
                 </Row>
                 {this.props.status ? (

@@ -21,7 +21,6 @@ namespace race {
             let user = Firebase.auth().currentUser;
             Firebase.database().ref("secondary/" + user.uid).once("value").then(function (snapshot) {
                 let userInfo = snapshot.val();
-                console.log(userInfo);
                 if (userInfo) {
                     then(userInfo);
                 }

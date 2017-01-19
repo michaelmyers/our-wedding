@@ -1,7 +1,13 @@
+@import "../styles/main";
+
 .field {
     white-space: inherit;
 }
 
 .check {
     margin-bottom: 10px;
+}
+
+.text {
+    font-family: $paragraph-font;
 }
