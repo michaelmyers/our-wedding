@@ -172,7 +172,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                 {this.props.user && !this.props.party ? (
                     <Row center>
                         <Col percentage={80}>
-                            <p> Please enter you email: </p>
+                            <p> Please enter your email: </p>
                             <Input
                                 theme={inputStyle}
                                 type="email"
