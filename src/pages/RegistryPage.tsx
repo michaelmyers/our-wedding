@@ -14,7 +14,7 @@ export default class RegistryPage extends React.Component<any, any> {
                 </Row>
                 <Row center>
                     <Col percentage={60}>
-                        <p style={{ textAlign: "center", fontSize: "1.0em" }}> We understand for some of you it is a destination wedding so your prsecence at our ceremony is the best gift you can give. However if you would like to helps us celebrate with a gift, we thank you for helping us build our home together.</p>
+                        <p style={{ textAlign: "center", fontSize: "1.0em" }}>Your presence at our ceremony is the best gift you can give. However, if you would like to helps us celebrate with a gift, we thank you for helping us build our home together.</p>
                     </Col>
                 </Row>
                 <Row center>
