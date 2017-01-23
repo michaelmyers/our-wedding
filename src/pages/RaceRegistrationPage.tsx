@@ -114,7 +114,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                 </Row>
                 <Row center>
                     <Col percentage={80}>
-                        <h4>Join us the morning of the wedding for a fun 5k!</h4>
+                        <h4>Join us the morning of the wedding for a fun 5k.</h4>
                         <h4>More details coming soon!</h4>
                     </Col>
                 </Row>
