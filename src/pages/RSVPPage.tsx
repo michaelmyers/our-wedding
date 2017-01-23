@@ -133,6 +133,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                             <Col>
                                 <h2>RSVP</h2>
                                 <p>Please respond by February 18</p>
+                                <span>Questions? <a href="mailto:us@annieandmichael.love">Email Us</a></span>
                             </Col>
                         </Row>
                         <Row center>

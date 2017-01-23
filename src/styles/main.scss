@@ -1,13 +1,44 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro|Archivo+Narrow');
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro|Nunito');
 
-$nav-font: 'Archivo Narrow', sans-serif;
+$nav-font: 'Nunito', sans-serif;
 $header-font: 'Merriweather', serif;
 $paragraph-font: 'Source Sans Pro', sans-serif;
 
 $header-background-color: #757575;
 $header-text-color: #fde6d4;
 
+// Site wide styles
+h1, h2, h3, h4, h5 {
+    font-family: $header-font;
+}
+
+p {
+    font-family: $paragraph-font;
+    font-size: 1.5em;
+}
+
 .link:hover {
         opacity: 0.50;
         transition: opacity .2s
+}
+
+.linkList {
+        text-align: justify;
+        list-style: none;
+        font-size: 1.4em;
+        font-family: $paragraph-font;
+        a {
+           color: #0000EE;
+        }
+}
+
+.time {
+        font-weight: bold;
+}
+
+.detail {
+        font-size: 1.0em;
+        a {
+         color:  #0000EE;
+        }
 }
