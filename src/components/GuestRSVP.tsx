@@ -151,7 +151,7 @@ export default class GuestRSVP extends React.Component<GuestRSVPProps, GuestRSVP
                 <Row>
                     <Col>
                         <Input
-                            hint="Food Preferences? Comments?"
+                            hint="Food allergies & restrictions, or other comments"
                             type="text"
                             value={this.state.comments}
                             onChange={this.updateComments} />
