@@ -7,6 +7,11 @@ To Upload your Guest List
 $ npm run pretest && node bin upload guest-list.csv
 ```
 
+To Deploy to Firebase
+```bash
+$ npm run deploy
+```
+
 # Technologies Used
 
 - MailChimp

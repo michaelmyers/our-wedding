@@ -81,8 +81,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
     }
 
     componentWillReceiveProps(nextProps: RSVPPageProps) {
-        // console.log("RSVP willReceiveProps");
-        // console.log(nextProps);
+
         if (!this.state.party && !nextProps.error) {
             // if no party, try to get one
             this.props.getParty();
@@ -133,6 +132,7 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                             <Col>
                                 <h2>RSVP</h2>
                                 <p>Please respond by February 18</p>
+                                <span>Questions? <a href="mailto:us@annieandmichael.love">Email Us</a></span>
                             </Col>
                         </Row>
                         <Row center>
@@ -163,12 +163,13 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
                 ) : undefined}
                 {this.props.error ? (
                     <Row center>
-                        <Col percentage={80}>
+                        <Col percentage={80} style={{marginBottom: "20px"}}>
                             <h4 style={{color: "#FF5252"}}>{this.props.error.message}</h4>
+                            <span>Problems? <a href="mailto:us@annieandmichael.love">Email Us</a></span>
                         </Col>
                     </Row>
                 ) : undefined}
-                {this.props.user && !this.props.email ? (
+                {this.props.user && !this.props.party ? (
                     <Row center>
                         <Col percentage={80}>
                             <p> Please enter you email: </p>

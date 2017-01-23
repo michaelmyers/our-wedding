@@ -43,7 +43,7 @@ export function user(state: UserState = USER_INITIAL, action: UserAction) {
     case SET_USER:
       return { ...state, user: action.user };
     case SET_EMAIL:
-      return { ...state, email: action.email, emailHash: action.emailHash };
+      return { ...state, email: action.email, emailHash: action.emailHash, partyError: undefined };
     case SET_NAME:
     return { ...state, name: action.name};
     case SET_PARTY:
