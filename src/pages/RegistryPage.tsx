@@ -21,7 +21,7 @@ export default class RegistryPage extends React.Component<any, any> {
                     <Col percentage={48}>
                         <a
                             className={style.link}
-                            href="https://secure.williams-sonoma.com/registry/w9djtcnk2b/access-registry.html"
+                            href="https://secure.williams-sonoma.com/registry/w9djtcnk2b/registry-list.html"
                             target="_blank">
                             <img
                                 style={{ width: "100%" }}
@@ -32,7 +32,7 @@ export default class RegistryPage extends React.Component<any, any> {
                     <Col percentage={48}>
                         <a
                             className={style.link}
-                            href="https://secure.williams-sonoma.com/registry/w9djtcnk2b/access-registry.html"
+                            href="http://www.crateandbarrel.com/gift-registry/annie-rorem-and-michael-myers/r5630133"
                             target="_blank">
                             <img
                                 style={{ width: "100%" }}

@@ -121,7 +121,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                 <Row center>
                     <Col percentage={80}>
                         <p>
-                            Registration is open until 3/11/17.
+                            Online registration is open until 3/11/17.
                         </p>
                         <p>
                             Register by 2/18/17 to ensure you get a custom race bib.
