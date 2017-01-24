@@ -16,7 +16,7 @@ export default class AreaInformationPage extends React.Component<any, any> {
                 <Row center>
                     <Col percentage={50}>
                         <h3>Hotels</h3>
-                        <p>We have blocks reserved at two near by hotels. Since Capitol Hill is mostly residential, we also recommend <a href="https://www.airbnb.com/s/Washington--DC">Airbnb</a></p>
+                        <p>We have blocks reserved at two nearby hotels. Since Capitol Hill is mostly residential, we also recommend <a href="https://www.airbnb.com/s/Washington--DC">Airbnb.</a></p>
                         <h4>Holiday Inn Express & Suites National Arboretum </h4>
                         <ul className={style.linkList}>
                             <li>1917 Bladensburg Road NE</li>
@@ -29,7 +29,7 @@ export default class AreaInformationPage extends React.Component<any, any> {
                             <li>550 C Street SW</li>
                             <li>Washington, DC 20024</li>
                             <li>202-479-4000</li>
-                            <li><i>Ask for the Rorem wedding.</i></li>
+                            <li><i>Ask for the Rorem wedding</i></li>
                         </ul>
                     </Col>
                 </Row>
@@ -55,7 +55,7 @@ export default class AreaInformationPage extends React.Component<any, any> {
                         <ul className={style.linkList}>
                             <li><a href="https://airandspace.si.edu/visit/museum-dc">The Air and Space Museum</a></li>
                             <li><a href="http://npg.si.edu/">The Portrait Gallery</a></li>
-                            <li><a href="http://hirshhorn.si.edu/collection/home/">The Hirshhorm</a></li>
+                            <li><a href="http://hirshhorn.si.edu/collection/home/">The Hirshhorn</a></li>
                             <li><a href="http://www.nga.gov/content/ngaweb/about/welcome-to-the-east-building.html">National Gallery of Art - East Building</a></li>
                         </ul>
                     </Col>
