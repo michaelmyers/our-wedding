@@ -69,7 +69,7 @@ export default class HomePage extends React.Component<any, any> {
                 <Row center>
                     <Col percentage={60}>
                         <h3 id="band">Band</h3>
-                        <p>Live music will be provided by Dr. Blues' <a href="http://newvegasloungedc.com/band/">Out of Town Blues Band</a>, a 7-peice rhythm and blues band.  The band plays out of the New Vegas Lounge, one of Washington, D.C.'s best clubs for live music and a much-loved dancing destination for us and our friends.</p>
+                        <p>Live music will be provided by Dr. Blues' <a href="http://newvegasloungedc.com/band/">Out of Town Blues Band</a>, a 7-piece rhythm and blues band.  The band plays out of the New Vegas Lounge, one of Washington, D.C.'s best clubs for live music and a much-loved dancing destination for us and our friends.</p>
                     </Col>
                 </Row>
                 <Row center>
