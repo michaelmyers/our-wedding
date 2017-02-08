@@ -1,5 +1,6 @@
 import * as admin from "firebase-admin";
 
+import Guest from "../src/models/guest";
 const wedding = require("../wedding.config");
 
 export function query() {
@@ -23,6 +24,10 @@ export function query() {
         let totalAttending = 0;
         let totalDeclined = 0;
 
+        let guestList: Guest[] = [];
+
+        console.log(Guest.csvHeader());
+
         // first iterate through the parties
         for (let partyName in parties) {
 
@@ -31,18 +36,24 @@ export function query() {
             for (let memberId in party) {
                 totalGuests += 1;
                 let member = party[memberId];
+                let guest = Guest.parse(member);
+                guestList.push(guest);
+
+                console.log(guest.toCSV());
+
                 if (member.status === "ATTENDING") {
-                    console.log(member.status + " " + member.fullName);
+                    // console.log(member.status + " " + member.fullName);
                     totalAttending += 1;
                 } else if (member.status === "DECLINED") {
-                    console.log(member.status + " " + member.fullName);
+                    // console.log(member.status + " " + member.fullName);
                     totalDeclined += 1;
-                }
-                if (member.comment && member.comment.length > 0) {
-                    console.log(member);
                 }
             }
         }
+
+
+
+
 
         console.log("Total Guest: " + totalGuests);
         console.log("Total Attending: " + totalAttending);
