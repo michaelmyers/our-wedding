@@ -2,8 +2,39 @@
 var admin = require("firebase-admin");
 var guest_1 = require("../src/models/guest");
 var wedding = require("../wedding.config");
-function query() {
-    console.log("time to query");
+function query(event) {
+    if (event === "secondary") {
+        querySecondary();
+    }
+    else {
+        queryGuestList();
+    }
+}
+exports.query = query;
+function querySecondary() {
+    // Initialize firebase-admin
+    admin.initializeApp({
+        credential: admin.credential.cert(wedding.firebaseAdmin),
+        databaseURL: wedding.firebase.databaseURL
+    });
+    // Get references to the database
+    var database = admin.database();
+    var secondaryRef = database.ref("/secondary");
+    secondaryRef.once("value", function (dataSnapshot) {
+        var people = dataSnapshot.val();
+        console.log("name,email");
+        for (var personId in people) {
+            var person = people[personId];
+            // console.log(person);
+            var name_1 = person.name;
+            var email = person.email;
+            console.log(name_1 + "," + email);
+        }
+        database.goOffline();
+    });
+}
+function queryGuestList() {
+    console.log("time to query ");
     // Initialize firebase-admin
     admin.initializeApp({
         credential: admin.credential.cert(wedding.firebaseAdmin),
@@ -47,5 +78,4 @@ function query() {
         database.goOffline();
     });
 }
-exports.query = query;
 //# sourceMappingURL=query.js.map

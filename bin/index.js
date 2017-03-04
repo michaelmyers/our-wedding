@@ -26,9 +26,9 @@ program
     deploy_1.deploy();
 });
 program
-    .command("query")
-    .action(function () {
-    query_1.query();
+    .command("query <event>")
+    .action(function (event) {
+    query_1.query(event);
 });
 program.parse(process.argv);
 //# sourceMappingURL=index.js.map

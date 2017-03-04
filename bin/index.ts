@@ -33,9 +33,9 @@ program
   });
 
 program
-.command("query")
-.action(function () {
-  query();
+.command("query <event>")
+.action(function (event: string) {
+  query(event);
 });
 
 program.parse(process.argv);
