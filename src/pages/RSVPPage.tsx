@@ -116,11 +116,11 @@ export class RSVPPage extends React.Component<RSVPPageProps, RSVPPageState> {
         let party: JSX.Element[] = [];
         if (this.state.party) {
             for (let guest of this.state.party.guests) {
-                party.push(
+                party.push((
                     <li key={guest.id} style={{ listStyle: "none" }}>
                         <GuestRSVP guest={guest} onChange={this.onRSVPChange} />
                     </li>
-                );
+                ));
             }
         }
 
