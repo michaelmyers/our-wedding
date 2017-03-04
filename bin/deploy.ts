@@ -20,7 +20,6 @@ export function deploy() {
         }
     }).then(function() {
         console.log("All done");
-        // console.log("\n");
     }).catch(function (err: any) {
         console.error(err.message);
     });
