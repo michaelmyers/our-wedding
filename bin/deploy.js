@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var client = require("firebase-tools");
 var wedding = require("../wedding.config");
 function deploy() {

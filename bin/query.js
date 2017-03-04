@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var admin = require("firebase-admin");
 var guest_1 = require("../src/models/guest");
 var wedding = require("../wedding.config");

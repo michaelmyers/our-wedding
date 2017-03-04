@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var program = require("commander");
 var deploy_1 = require("./deploy");
 var query_1 = require("./query");
