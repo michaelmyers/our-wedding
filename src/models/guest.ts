@@ -67,6 +67,16 @@ export default class Guest implements GuestProps {
 
     readonly rsvpTimestamp: number;
 
+    get rsvpDate(): Date | undefined {
+        let date: Date;
+
+        if (this.rsvpTimestamp > 0) {
+            date = new Date(this.rsvpTimestamp);
+        }
+
+        return date;
+    }
+
     readonly email: string;
 
     readonly id: string;
@@ -78,6 +88,21 @@ export default class Guest implements GuestProps {
     readonly fullName: string;
 
     readonly party: string;
+
+    toCSV(): string {
+        let csv: string;
+
+        csv = this.fullName + ",";
+        csv += this.status + ",";
+        csv += (this.rsvpDate ? this.rsvpDate : "") + ",";
+        csv += this.comments;
+
+        return csv;
+    }
+
+    static csvHeader(): string {
+        return "FULL_NAME, STATUS, RSVP_DATE, COMMENTS";
+    }
 
     static parse(data: any): Guest {
 

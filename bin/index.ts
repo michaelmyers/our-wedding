@@ -3,6 +3,7 @@
 import * as program from "commander";
 
 import { deploy } from "./deploy";
+import { query } from "./query";
 import { upload } from "./upload";
 
 const config = require("../wedding.config");
@@ -30,6 +31,12 @@ program
   .action(function () {
     deploy();
   });
+
+program
+.command("query <event>")
+.action(function (event: string) {
+  query(event);
+});
 
 program.parse(process.argv);
 

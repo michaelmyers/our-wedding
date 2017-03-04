@@ -12,6 +12,11 @@ To Deploy to Firebase
 $ npm run deploy
 ```
 
+To Run a Quick Query
+```bash
+$ npm run pretest && node bin query
+```
+
 # Technologies Used
 
 - MailChimp

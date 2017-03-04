@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var client = require("firebase-tools");
 var wedding = require("../wedding.config");
 function deploy() {
@@ -18,7 +19,6 @@ function deploy() {
         }
     }).then(function () {
         console.log("All done");
-        // console.log("\n");
     }).catch(function (err) {
         console.error(err.message);
     });

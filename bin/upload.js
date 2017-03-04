@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var parse = require("csv-parse");
 var admin = require("firebase-admin");
 var fs = require("fs");

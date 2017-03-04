@@ -22,7 +22,8 @@ export default class AreaInformationPage extends React.Component<any, any> {
                             <li>1917 Bladensburg Road NE</li>
                             <li>Washington, DC 20002</li>
                             <li>202-266-9000</li>
-                            <li><i>Ask for the Myers-Rorem wedding</i></li>
+                            <li><i>Ask for the Rorem-Myers wedding</i></li>
+                            <li><i>Or register online with this <a href="https://www.hiexpress.com/redirect?path=hd&brandCode=ex&localeCode=en&regionCode=1&hotelCode=wasny&_PMID=99801505&GPC=RRW&viewfullsite=true">link</a> which has the group code prepopulated.</i></li>
                         </ul>
                         <h4>Holiday Inn Capitol</h4>
                         <ul className={style.linkList}>

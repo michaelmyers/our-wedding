@@ -158,7 +158,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                     </Col>
                 </Row>
                 <Row center>
-                    <Col percentage={80} style={{marginTop: "20px", fontSize:"1.0em"}}>
+                    <Col percentage={80} style={{marginTop: "20px", fontSize: "1.0em"}}>
                         <p><i>Please Note:</i> Participants must register themselves at this page.  Please share this link with other members of your party so that they can register.</p>
                         <p>To email the link, click <a href="mailto:?subject=5k Race Registration&body=Be sure to fill out your registration by 2/18/17 to get a custom race bib.  https://annieandmichael.love/race">here.</a></p>
                     </Col>

@@ -55,7 +55,7 @@ namespace party {
                         }
                     });
                 } else {
-                    let errorMessage = "We couldn't not find any information about you.";
+                    let errorMessage = "We couldn't find any information about you.";
                     console.info(errorMessage);
                     reject(new Error(errorMessage));
                 }

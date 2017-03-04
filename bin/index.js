@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var program = require("commander");
 var deploy_1 = require("./deploy");
+var query_1 = require("./query");
 var upload_1 = require("./upload");
 var config = require("../wedding.config");
 var pkg = require("../package.json");
@@ -23,6 +25,11 @@ program
     .command("deploy")
     .action(function () {
     deploy_1.deploy();
+});
+program
+    .command("query <event>")
+    .action(function (event) {
+    query_1.query(event);
 });
 program.parse(process.argv);
 //# sourceMappingURL=index.js.map
