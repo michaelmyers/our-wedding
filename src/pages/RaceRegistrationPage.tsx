@@ -110,12 +110,48 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                         <h2>Wedding Day 5k</h2>
                         <h3>3/18/17</h3>
                         <h4>9:30 AM Start</h4>
+                        <p>9:00 AM Check-In</p>
                     </Col>
                 </Row>
                 <Row center>
                     <Col percentage={80}>
-                        <h4>Join us the morning of the wedding for a fun 5k.</h4>
-                        <h4>More details coming soon!</h4>
+                        <iframe
+                            src="https://www.google.com/maps/d/u/1/embed?mid=1sWrbbnI_VuPhYdFXbDlM3jbt_n8"
+                            width="640"
+                            height="480" />
+                    </Col>
+                </Row>
+                <Row center>
+                    <Col percentage={60}>
+                        <h3>Details</h3>
+                        <p>
+                            Check-in will start at 9:00 AM with the race starting a 9:30 AM.
+                            Some light food and water will be provided as well as a place to store any personal items while you run.
+                            The awards ceremony will start once all racers have completed the course.
+                        </p>
+                    </Col>
+                </Row>
+                <Row center>
+                    <Col percentage={60}>
+                        <h3>Course</h3>
+                        <p>
+                            The course is a simple out and back along the Anacostia River Walk Trail, a common route for Annie and Michael.
+                            The start-finish is in Anacostia Park (Section F) near Benning Road.
+                            The turn-around is along the trail in the middle of the only bridge on the trail that crosses over a railroad.
+                        </p>
+                    </Col>
+                </Row>
+                <Row center>
+                    <Col percentage={60}>
+                        <h3>Transportation</h3>
+                        <p>There are several ways to get to the start line in Anacostia Park.
+                           If you are driving, using the Oklahoma Ave entrance to park in the RFK Stadium Lot 7.
+                           Otherwise, see the map for other nearby transportation options. </p>
+                    </Col>
+                </Row>
+                <Row center>
+                    <Col>
+                        <h3>Register </h3>
                     </Col>
                 </Row>
                 <Row center>
@@ -158,7 +194,7 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                     </Col>
                 </Row>
                 <Row center>
-                    <Col percentage={80} style={{marginTop: "20px", fontSize: "1.0em"}}>
+                    <Col percentage={80} style={{ marginTop: "20px", fontSize: "1.0em" }}>
                         <p><i>Please Note:</i> Participants must register themselves at this page.  Please share this link with other members of your party so that they can register.</p>
                         <p>To email the link, click <a href="mailto:?subject=5k Race Registration&body=Be sure to fill out your registration by 2/18/17 to get a custom race bib.  https://annieandmichael.love/race">here.</a></p>
                     </Col>
