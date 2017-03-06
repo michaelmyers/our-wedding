@@ -150,7 +150,8 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                         <h4>Most Enthusiastic</h4>
                         <h4>Funniest Story from the Run</h4>
                         <h4>Most Vibrant Running Outfit</h4>
-                        <h4>D.F.L.</h4>
+                        <h4>Got Your Money's Worth</h4>
+                        <i>(For the participant who spends the most time on the course)</i>
                     </Col>
                 </Row>
                 <Row center>
