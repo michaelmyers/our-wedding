@@ -143,6 +143,18 @@ export class RaceRegistrationPage extends React.Component<RaceRegistrationPagePr
                 </Row>
                 <Row center>
                     <Col percentage={60}>
+                        <h3>Awards</h3>
+                        <h4>1st Place Male</h4>
+                        <h4>1st Place Female</h4>
+                        <h4>1st Married Couple</h4>
+                        <h4>Most Enthusiastic</h4>
+                        <h4>Funniest Story from the Run</h4>
+                        <h4>Most Vibrant Running Outfit</h4>
+                        <h4>D.F.L.</h4>
+                    </Col>
+                </Row>
+                <Row center>
+                    <Col percentage={60}>
                         <h3>Transportation</h3>
                         <p>There are several ways to get to the start line in Anacostia Park.
                            If you are driving, using the Oklahoma Ave entrance to park in the RFK Stadium Lot 7.
