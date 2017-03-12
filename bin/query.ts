@@ -92,10 +92,6 @@ function queryGuestList() {
             }
         }
 
-
-
-
-
         console.log("Total Guest: " + totalGuests);
         console.log("Total Attending: " + totalAttending);
         console.log("Total Declined: " + totalDeclined);

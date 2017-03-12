@@ -94,6 +94,7 @@ export default class Guest implements GuestProps {
 
         csv = this.fullName + ",";
         csv += this.status + ",";
+        csv += this.email + ",";
         csv += (this.rsvpDate ? this.rsvpDate : "") + ",";
         csv += this.comments;
 
@@ -101,7 +102,7 @@ export default class Guest implements GuestProps {
     }
 
     static csvHeader(): string {
-        return "FULL_NAME, STATUS, RSVP_DATE, COMMENTS";
+        return "FULL_NAME, STATUS, EMAIL, RSVP_DATE, COMMENTS";
     }
 
     static parse(data: any): Guest {
